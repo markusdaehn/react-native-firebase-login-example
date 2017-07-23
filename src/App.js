@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, StyleProvider } from 'native-base';
-import getTheme from './native-base-theme/components';
+import getTheme from '../native-base-theme/components';
 
 export default class App extends Component {
   render() {
