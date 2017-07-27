@@ -51,7 +51,7 @@ export default class DrawerBar extends React.Component {
             return (
               <ListItem
                 button
-                onPress={() => this.props.navigation.navigatee(data)}
+                onPress={() => this.props.navigation.navigate(data)}
               >
                 <Text>{data}</Text>
               </ListItem>
