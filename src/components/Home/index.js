@@ -3,6 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import BlankPage2 from '../BlankPage2';
 import DrawerBar from '../DrawerBar';
+import { DrawerNavigator, NavigationActions } from 'react-navigation';
 import {
   Container,
   Header,
@@ -16,6 +17,7 @@ import {
   Right
 } from 'native-base';
 import { Grid, Row } from 'react-native-easy-grid';
+
 import { setIndex } from '../../actions/list';
 import { openDrawer } from '../../actions/drawer';
 import styles from './styles';
@@ -31,11 +33,18 @@ class Home extends Component {
     openDrawer: React.PropTypes.func
   };
 
-  render(index) {
+  newPage(index) {
+    this.props.setIndex(index);
+    Actions.blankPage();
+  }
+
+  render() {
+    console.log(DrawNav, '786785786');
     return (
       <Container style={styles.container}>
         <Header>
           <Left>
+
             <Button
               transparent
               onPress={() => {
@@ -51,9 +60,11 @@ class Home extends Component {
               <Icon active name='power' />
             </Button>
           </Left>
+
           <Body>
             <Title>Home</Title>
           </Body>
+
           <Right>
             <Button
               transparent
@@ -64,17 +75,17 @@ class Home extends Component {
           </Right>
         </Header>
         <Content>
-          <Grid style={ styles.mt }>
+          <Grid style={styles.mt}>
             {this.props.list.map((item, i) => (
               <Row key={i}>
                 <TouchableOpacity
                   style={styles.row}
-                  onPress{() =>
+                  onPress={() =>
                     this.props.navigation.navigate('BlankPage', {
                       name: { item }
                     })}
                 >
-                  <Text style={ styles.text }>{item}</Text>
+                  <Text style={styles.text}>{item}</Text>
                 </TouchableOpacity>
               </Row>
             ))}
@@ -88,7 +99,7 @@ class Home extends Component {
 function bindAction(dispatch) {
   return {
     setIndex: index => dispatch(setIndex(index)),
-    openDrawer: () => dispatch(openDrawer()))
+    openDrawer: () => dispatch(openDrawer())
   };
 }
 const mapStateToProps = state => ({
@@ -107,11 +118,10 @@ const DrawNav = DrawerNavigator(
   }
 );
 const DrawerNav = null;
-DrawNav.navigationOptions = ({navigation}) => {
+DrawNav.navigationOptions = ({ navigation }) => {
   DrawerNav = navigation;
   return {
     header: null
   };
 };
-
 export default DrawNav;

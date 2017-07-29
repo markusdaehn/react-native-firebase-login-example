@@ -1,37 +1,34 @@
 import React, { Component } from 'react';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, StyleProvider } from 'native-base';
-import getTheme from '../native-base-theme/components';
+import { StyleSheet } from 'react-native';
+import { Container, Content, Text, View } from 'native-base';
+import MainStackRouter from './routers/MainStackRouter';
+import ProgressBar from './components/loaders/ProgressBar';
 
-export default class App extends Component {
+import theme from './themes/base-theme';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: null,
+    height: null
+  },
+  modal: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  modal1: {
+    height: 300
+  }
+});
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    return (
-      <StyleProvider style={getTheme()}>
-        <Container>
-          <Header>
-            <Left>
-              <Button transparent>
-                <Icon name='menu' />
-              </Button>
-            </Left>
-            <Body>
-              <Title>Header</Title>
-            </Body>
-            <Right />
-          </Header>
-          <Content>
-            <Text>
-              This is Content Section
-            </Text>
-          </Content>
-          <Footer>
-            <FooterTab>
-              <Button full>
-                <Text>Footer</Text>
-              </Button>
-            </FooterTab>
-          </Footer>
-        </Container>
-      </StyleProvider>
-    );
+    return <MainStackRouter />;
   }
 }
+
+export default App;
