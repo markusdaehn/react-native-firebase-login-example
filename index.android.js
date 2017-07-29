@@ -1,3 +1,3 @@
 import { AppRegistry } from 'react-native';
-import setup from './src/setup';
+import setup from './app/setup';
 AppRegistry.registerComponent('yuzsa', setup);
