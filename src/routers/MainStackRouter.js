@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Login from "../components/Login";
-import Home from "../components/Home";
-import BlankPage from "../components/BlankPage";
+import Login from "../screens/Login";
+import Home from "../screens/Home";
+import BlankPage from "../screens/BlankPage";
 import HomeDrawerRouter from "./HomeDrawerRouter";
 import { StackNavigator } from "react-navigation";
 import { Header, Left, Button, Icon, Body, Title, Right } from "native-base";

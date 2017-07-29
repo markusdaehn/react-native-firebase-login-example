@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Home from '../components/Home';
-import BlankPage2 from '../components/BlankPage2';
+import Home from '../screens/Home';
+import BlankPage2 from '../screens/BlankPage2';
 import { DrawerNavigator } from 'react-navigation';
-import DrawerBar from '../components/DrawerBar';
+import DrawerBar from '../screens/DrawerBar';
 
 export default (DrawNav = DrawerNavigator(
   {
