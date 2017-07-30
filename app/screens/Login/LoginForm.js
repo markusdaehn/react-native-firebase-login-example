@@ -45,7 +45,7 @@ const LoginForm  = ({login}) =>  {
 }
 
 LoginForm.propTypes = {
-  submit: React.PropTypes.func
+  login: React.PropTypes.func
 };
 
 export default reduxForm({
