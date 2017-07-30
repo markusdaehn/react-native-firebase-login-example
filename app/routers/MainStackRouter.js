@@ -12,4 +12,6 @@ export default (StackNav = StackNavigator({
   Login: { screen: Login },
   Home: { screen: Home },
   BlankPage: { screen: BlankPage }
+}, {
+  headerMode: 'none'
 }));
