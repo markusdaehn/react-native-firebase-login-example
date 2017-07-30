@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
-import { connect } from 'react-redux';
 import {
   Container,
   Content,
-  Item,
-  Input,
-  Button,
-  Icon,
   View,
-  Text
 } from 'native-base';
-import { Field, reduxForm } from 'redux-form';
-import { setUser } from '../../actions/user';
 import styles from './styles';
+import { setUser } from '../../actions/user';
 import LoginForm from './LoginForm';
 
 const background = require('../../../images/login-bg.png');
