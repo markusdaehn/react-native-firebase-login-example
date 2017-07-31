@@ -22,21 +22,29 @@ const ErrorMessage = ({error}) => {
   );
 }
 
-const LoginInput = ({ input, icon, placeholder, meta: {error} }) => {
+const FormField = ({ input, icon, meta: {error}, ...inputProps}) => {
   return (
     <Item error={error !== undefined}>
       <Icon active name={icon} />
-      <Input placeholder={placeholder} {...input} />
+      <Input {...inputProps} {...input} />
       <ErrorMessage error={error} />
     </Item>
   );
 }
 
+const EmailField = () => {
+  return (<Field name='email' icon='person' placeholder='EMAIL'  keyboardType="email-address" component={FormField} />);
+}
+
+const PasswordField = () => {
+  return (<Field name='password' icon='unlock' placeholder='PASSWORD' secureTextEntry component={FormField} />);
+}
+
 const LoginForm  = ({login}) =>  {
   return (
     <View style={styles.bg}>
-      <Field name='email' icon='person' placeholder='EMAIL' component={LoginInput} />
-      <Field name='password' icon='unlock' placeholder='PASSWORD' component={LoginInput} />
+      <EmailField />
+      <PasswordField />
       <Button style={styles.btn} onPress={login}>
         <Text>Login</Text>
       </Button>
