@@ -19,7 +19,7 @@ export default class Login extends Component {
         <View style={styles.container}>
           <Content>
             <Image source={background} style={styles.shadow}>
-              <LoginForm login={navigate}/>
+              <LoginForm handleSubmit={navigate}/>
             </Image>
           </Content>
         </View>

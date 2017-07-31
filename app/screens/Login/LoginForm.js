@@ -7,6 +7,7 @@ import {
   View,
   Text
 } from 'native-base';
+import { KeyboardAvoidingView } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import styles from './styles';
 import validate from './validate';
@@ -22,38 +23,81 @@ const ErrorMessage = ({error}) => {
   );
 }
 
-const FormField = ({ input, icon, meta: {error}, ...inputProps}) => {
-  return (
-    <Item error={error !== undefined}>
+class FormField extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    let { input, name, icon, meta: {error}, ...inputProps} = this.props;
+    return (
+      <Item error={error !== undefined}>
       <Icon active name={icon} />
-      <Input {...inputProps} {...input} />
+      <Input ref='input' {...inputProps} {...input} />
       <ErrorMessage error={error} />
-    </Item>
-  );
+      </Item>
+    );
+  }
 }
 
-const EmailField = () => {
-  return (<Field name='email' icon='person' placeholder='EMAIL'  keyboardType="email-address" component={FormField} />);
+const EmailField = (props) => {
+  return (<Field
+            name='email'
+            icon='person'
+            placeholder='EMAIL'
+            keyboardType="email-address"
+            autoCorrect={false}
+            autoCapitalize={'none'}
+            component={FormField}
+            {...props}
+          />);
 }
 
-const PasswordField = () => {
-  return (<Field name='password' icon='unlock' placeholder='PASSWORD' secureTextEntry component={FormField} />);
+class PasswordField extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  focus() {
+    //@NOTE: Bug with nativebase not having focus. Need to access _root.
+    this.refs.password.getRenderedComponent().refs.input._root.focus();
+  }
+
+  render() {
+    return (<Field
+              name='password'
+              ref='password'
+              withRef
+              icon='unlock'
+              placeholder='PASSWORD'
+              secureTextEntry
+              component={FormField}
+              {...this.props}
+            />);
+  }
 }
 
-const LoginForm  = ({login}) =>  {
-  return (
-    <View style={styles.bg}>
-      <EmailField />
-      <PasswordField />
-      <Button style={styles.btn} onPress={login}>
+class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    let {handleSubmit} = this.props;
+    return (
+      <KeyboardAvoidingView behavior='padding' style={styles.bg}>
+        <EmailField returnKeyType='next' onSubmitEditing={() => {this.refs.password.focus()}}/>
+        <PasswordField ref='password' returnKeyType='go' onSubmitEditing={() => {handleSubmit()}}/>
+        <Button style={styles.btn} onPress={handleSubmit}>
         <Text>Login</Text>
-      </Button>
-    </View>
-  );
+        </Button>
+      </KeyboardAvoidingView>
+    );
+  }
 }
 
 LoginForm.propTypes = {
-  login: React.PropTypes.func
+  handleSubmit: React.PropTypes.func
 };
 
 export default reduxForm({
