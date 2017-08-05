@@ -33,6 +33,7 @@ export default {
   },
   btn: {
     marginTop: 20,
-    alignSelf: 'center',
+    width:150,
+    alignSelf: 'center'
   },
 };

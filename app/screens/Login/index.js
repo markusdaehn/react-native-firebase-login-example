@@ -1,26 +1,21 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
-import {
-  Container,
-  Content,
-  View,
-} from 'native-base';
-import styles from './styles';
-import { setUser } from '../../actions/user';
+import { KeyboardAvoidingView, Image } from 'react-native';
+import { Container, Content } from 'native-base';
 import LoginForm from './LoginForm';
-import { KeyboardAvoidingView } from 'react-native';
+import styles from './styles';
 
 const background = require('../../../images/login-bg.png');
 
 export default class Login extends Component {
   render() {
-    const navigate = () => this.props.navigation.navigate('Home');
+    const submitLogin = () => this.props.navigation.navigate('Home');
+    const gotoSignUp = () => this.props.navigation.navigate('SignUp')
     return (
       <Container>
         <KeyboardAvoidingView style={styles.container}>
           <Content>
             <Image source={background} style={styles.shadow}>
-              <LoginForm handleSubmit={navigate}/>
+              <LoginForm submitLogin={submitLogin} gotoSignUp={gotoSignUp}/>
             </Image>
           </Content>
         </KeyboardAvoidingView>

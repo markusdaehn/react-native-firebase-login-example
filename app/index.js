@@ -4,7 +4,7 @@ import { StyleProvider } from 'native-base';
 import configureStore from './configureStore';
 import getTheme from '../native-base-theme/components';
 import platform from '../native-base-theme/variables/platform';
-import MainStackRouter from './routers/MainStackRouter';
+import RootStackRouter from './routers/RootStackRouter';
 
 export default class App extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ export default class App extends Component {
     return (
       <StyleProvider style={getTheme(platform)}>
         <Provider store={this.state.store}>
-          <MainStackRouter />
+          <RootStackRouter />
         </Provider>
       </StyleProvider>
     );
