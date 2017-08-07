@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TextInput } from 'react-native';
 import { Field } from 'redux-form';
 import { Item, Icon, Input, Text } from 'native-base';
 import { reduxForm as rf } from 'redux-form';
@@ -26,24 +27,46 @@ export class FormInput extends Component {
     return (
       <Item error={error !== undefined}>
         <Icon active name={icon} />
-        <Input ref='input' {...inputProps} {...input} />
+        <Input
+          ref='input'
+          {...inputProps}
+          onChangeText={input.onChange}
+          onBlur={input.onBlur}
+          onFocus={input.onFocus}
+          value={input.value}
+        />
         <ErrorMessage error={error} />
       </Item>
     );
   }
 }
 
-export const EmailField = (props) => {
-  return (<Field
-            name='email'
-            icon='person'
-            placeholder='EMAIL'
-            keyboardType="email-address"
-            autoCorrect={false}
-            autoCapitalize={'none'}
-            component={FormInput}
-            {...props}
-          />);
+export class EmailField extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  focus() {
+    //@NOTE: Bug with nativebase not having focus. Need to access _root.
+    this.refs.email.getRenderedComponent().refs.input._root.focus();
+  }
+
+  render() {
+    return (
+      <Field
+        name='email'
+        ref='email'
+        withRef
+        icon='person'
+        placeholder='EMAIL'
+        keyboardType="email-address"
+        autoCorrect={false}
+        autoCapitalize={'none'}
+        component={FormInput}
+        {...this.props}
+      />
+    );
+  }
 }
 
 export class PasswordField extends Component {
@@ -57,15 +80,19 @@ export class PasswordField extends Component {
   }
 
   render() {
-    return (<Field
-              name='password'
-              ref='password'
-              withRef
-              icon='unlock'
-              placeholder='PASSWORD'
-              secureTextEntry
-              component={FormInput}
-              {...this.props}
-            />);
+    const { name, icon, placeholder, ...otherProps } = this.props;
+
+    return (
+      <Field
+        name={name || 'password'}
+        ref='password'
+        withRef
+        icon={icon || 'unlock'}
+        placeholder={placeholder || 'PASSWORD'}
+        secureTextEntry
+        component={FormInput}
+        {...otherProps}
+      />
+    );
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, View, Text } from 'native-base';
+import { Button, View, Text, Form } from 'native-base';
 import { EmailField, PasswordField, reduxForm } from '../../components/redux-form'
 import styles from './styles';
 import validate from './validate';
@@ -12,7 +12,7 @@ export class LoginForm extends Component {
   render() {
     const { submitLogin, gotoSignUp } = this.props;
     return (
-      <View behavior='padding' style={styles.bg}>
+      <Form behavior='padding' style={styles.bg}>
         <EmailField returnKeyType='next' onSubmitEditing={() => {this.refs.password.focus()}}/>
         <PasswordField ref='password' returnKeyType='go' onSubmitEditing={() => {submitLogin()}}/>
         <Button style={styles.btn} onPress={submitLogin}>
@@ -24,7 +24,7 @@ export class LoginForm extends Component {
         >
           <Text>New here?</Text>
         </Button>
-      </View>
+      </Form>
     );
   }
 }

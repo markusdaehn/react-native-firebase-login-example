@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, View, Text } from 'native-base';
+import { Button, View, Text, Form } from 'native-base';
 import { EmailField, PasswordField, reduxForm } from '../../components/redux-form';
 import styles from './styles';
 import validate from './validate';
@@ -15,60 +15,59 @@ export class SignUpForm extends Component {
     };
   }
 
-  submitSignUp() {
-    this.props.createUser({
-      email: this.state.email,
-      password: this.state.password
-    }, (error, userData) => {
-      if(error) {
+  submitSignUp(values) {
+    const { email, password } = values;
+
+    this.props.createUser(email, password)
+      .then((user) => {
+        alert('User created ' + user);
+      })
+      .catch((error) => {
         switch(error.code) {
-          case 'EMAIL_TAKEN':
+          case 'auth/email-already-in-use':
             alert('Email is taken');
             break;
-          case 'INVALID_EMAIL':
+          case 'auth/invalid-email':
             alert('Email is invalid');
             break;
+          case 'auth/operation-not-allowed':
+            alert('Email and password login not enabled');
+            break;
+          case 'auth/weak-password':
+            alert('Password is too weak');
+            break;
           default:
-            alert ('Unable to create user');
+            alert (error.message || 'An unknown error occurred');
             break;
         }
-      } else {
-        alert ('User account');
-      }
-
-      this.setState({
-        email: '',
-        password: '',
-        passwordConfirmation: '',
       });
-    });
   }
 
   render() {
+    const { handleSubmit } = this.props;
+
     return (
-      <View behavior='padding'>
+      <Form behavior='padding'>
         <EmailField
+          ref='email'
           returnKeyType='next'
           onSubmitEditing={() => this.refs.password.focus()}
-          onChangeText={(text) => this.setState({email: text})}
         />
         <PasswordField
           ref='password'
           returnKeyType='next'
           onSubmitEditing={() => {() => this.refs.passwordConfirmation.focus()}}
-          onChangeText={(text) => this.setState({password: text})}
         />
         <PasswordField
           name='passwordConfirmation'
           ref='passwordConfirmation'
           placeholder='CONFIRM PASSWORD'
           returnKeyType='go'
-          onSubmitEditing={() => this.submitSignUp()}
-          onChangeText={(text) => this.setState({passwordConfirmation: text})}
+          onSubmitEditing={this.props.handleSubmit(this.submitSignUp.bind(this))}
         />
         <Button
           style={styles.btn}
-          onPress={() => this.submitSignUp()}
+          onPress={this.props.handleSubmit(this.submitSignUp.bind(this))}
         >
           <Text>SignUp</Text>
         </Button>
@@ -78,7 +77,7 @@ export class SignUpForm extends Component {
         >
           <Text>Got an Account?</Text>
         </Button>
-      </View>
+      </Form>
     );
   }
 }
