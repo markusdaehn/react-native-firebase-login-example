@@ -1,21 +1,19 @@
-export default function validate ({email='', password=''}) {
+import validator from '../../lib/validator';
+
+export default function validate({email='', password=''}) {
   const error = {
     email: '',
     password: '',
-    passwordConfirmation: ''
   };
 
-  if (email.length < 8 && email !== '') {
-    error.email = 'too short';
+  const emailValidation = validator.validateEmail(email);
+  const passwordValidation = validator.validatePassword(password);
+
+  if(!emailValidation.valid) {
+    error.email = emailValidation.errors[0];
   }
-  if (!email.includes('@') && email !== '') {
-    error.email = '@ not included';
-  }
-  if (password.length > 12) {
-    error.password = 'max 11 characters';
-  }
-  if (password.length < 5 && password.length > 0) {
-    error.password = 'Weak';
+  if(!passwordValidation.valid) {
+    error.password = passwordValidation.errors[0];
   }
 
   return error;

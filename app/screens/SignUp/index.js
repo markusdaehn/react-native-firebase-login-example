@@ -22,13 +22,14 @@ export default class SignUp extends Component {
 
   render() {
     const auth = firebase.auth();
-    const goToLogin = () => this.props.navigation.navigate('Login');
+    const gotoLogin = () => this.props.navigation.navigate('Login');
+    const gotoHome = () => this.props.navigation.navigate('Home');
     const createUser = auth.createUserWithEmailAndPassword.bind(auth);
 
     return (
       <Container style={styles.container}>
         <Content>
-          <SignUpForm createUser={createUser} goToLogin={goToLogin}/>
+          <SignUpForm createUser={createUser} gotoLogin={gotoLogin} gotoHome={gotoHome}/>
         </Content>
       </Container>
     );

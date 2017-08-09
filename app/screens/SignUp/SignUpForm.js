@@ -1,44 +1,46 @@
 import React, { Component } from 'react';
 import { Button, View, Text, Form } from 'native-base';
-import { EmailField, PasswordField, reduxForm } from '../../components/redux-form';
+import { EmailField, PasswordField, reduxForm, SubmissionError } from '../../components/redux-form';
 import styles from './styles';
 import validate from './validate';
 
 export class SignUpForm extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      email: '',
-      password: '',
-      passwordConfirmation: ''
-    };
   }
 
   submitSignUp(values) {
     const { email, password } = values;
+    const _error =  'Failed to create account';
 
-    this.props.createUser(email, password)
+    return this.props.createUser(email, password)
       .then((user) => {
-        alert('User created ' + user);
+        this.props.gotoHome()
       })
       .catch((error) => {
+        if(!error) throw new Error('Unknown error.')
         switch(error.code) {
           case 'auth/email-already-in-use':
-            alert('Email is taken');
-            break;
+            throw new SubmissionError({
+              email: 'Email is taken',
+              _error
+            });
           case 'auth/invalid-email':
-            alert('Email is invalid');
-            break;
+            throw new SubmissionError({
+              email: 'Email is invalid',
+              _error
+            });
           case 'auth/operation-not-allowed':
-            alert('Email and password login not enabled');
-            break;
+            throw new SubmissionError({
+              _error: 'Email login not enabled'
+            });
           case 'auth/weak-password':
-            alert('Password is too weak');
-            break;
+            throw new SubmissionError({
+              email: 'Password is too weak',
+              _error
+            });
           default:
-            alert (error.message || 'An unknown error occurred');
-            break;
+            throw new Error(error.message || 'Unknown error.');
         }
       });
   }
@@ -55,13 +57,6 @@ export class SignUpForm extends Component {
         />
         <PasswordField
           ref='password'
-          returnKeyType='next'
-          onSubmitEditing={() => {() => this.refs.passwordConfirmation.focus()}}
-        />
-        <PasswordField
-          name='passwordConfirmation'
-          ref='passwordConfirmation'
-          placeholder='CONFIRM PASSWORD'
           returnKeyType='go'
           onSubmitEditing={this.props.handleSubmit(this.submitSignUp.bind(this))}
         />
@@ -73,7 +68,7 @@ export class SignUpForm extends Component {
         </Button>
         <Button
           style={styles.btn}
-          onPress={() => this.props.goToLogin()}
+          onPress={() => this.props.gotoLogin()}
         >
           <Text>Got an Account?</Text>
         </Button>
@@ -83,7 +78,8 @@ export class SignUpForm extends Component {
 }
 
 SignUpForm.propTypes = {
-  submitSignUp: React.PropTypes.func,
+  gotoHome: React.PropTypes.func,
+  gotoLogin: React.PropTypes.func,
   createUser: React.PropTypes.func
 }
 

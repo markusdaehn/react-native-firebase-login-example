@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "color": "^2.0.0",
+    "email-validator": "^1.1.1",
     "firebase": "^4.1.3",
     "native-base": "^2.3.0",
     "react": "16.0.0-alpha.12",
@@ -29,6 +30,7 @@
     "redux": "^3.7.2",
     "redux-form": "^7.0.1",
     "redux-persist": "^4.8.2",
+    "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "remote-redux-devtools": "^0.5.12"
   }

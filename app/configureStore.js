@@ -2,11 +2,10 @@
 import { AsyncStorage } from 'react-native';
 import devTools from 'remote-redux-devtools';
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
 import { persistStore, autoRehydrate } from 'redux-persist';
+import thunk from 'redux-thunk';
+import promise from 'redux-promise';
 import reducer from './reducers';
-//TODO: Replace with redux-promise
-import promise from './promise';
 
 export default function configureStore(onCompletion:()=>void):any {
   const enhancer = compose(

@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { TextInput } from 'react-native';
 import { Field } from 'redux-form';
 import { Item, Icon, Input, Text } from 'native-base';
-import { reduxForm as rf } from 'redux-form';
+import { reduxForm as rf, SubmissionError as serr } from 'redux-form';
 
 export const reduxForm = rf;
+export const SubmissionError = serr;
 
 export const ErrorMessage = ({error}) => {
   if(error === undefined) return <Text />

@@ -10,7 +10,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false,
+      isLoading: true,
       store: configureStore(() => this.setState({ isLoading: false })),
     };
   }
