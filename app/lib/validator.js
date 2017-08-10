@@ -29,7 +29,7 @@ const validatePassword = (password) => {
     if(password.length < 6) {
       return {
         valid: false,
-        errors: ['Password is too weak.']
+        errors: ['Password is too weak']
       };
     }
     if(password.length > 30) {
@@ -49,6 +49,6 @@ const validatePassword = (password) => {
 }
 
 export default {
-  validateEmail: () => ({valid: true}),
-  validatePassword: () => ({valid:true})
+  validateEmail,
+  validatePassword
 };

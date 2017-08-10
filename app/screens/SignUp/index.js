@@ -1,18 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Content } from 'native-base';
 import SignUpForm from './SignUpForm';
-import firebase from 'firebase';
 import styles from './styles';
-const config = {
-   apiKey: "AIzaSyBTQ9ZxGK8Ia6bjbRwcRboYN2CpbiBRMh8",
-   authDomain: "yuzsa-prod.firebaseapp.com",
-   databaseURL: "https://yuzsa-prod.firebaseio.com",
-   projectId: "yuzsa-prod",
-   storageBucket: "yuzsa-prod.appspot.com",
-   messagingSenderId: "512006653654"
- };
-
-firebase.initializeApp(config);
+import onSubmit from './submit';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -21,15 +11,13 @@ export default class SignUp extends Component {
 
 
   render() {
-    const auth = firebase.auth();
     const gotoLogin = () => this.props.navigation.navigate('Login');
     const gotoHome = () => this.props.navigation.navigate('Home');
-    const createUser = auth.createUserWithEmailAndPassword.bind(auth);
 
     return (
       <Container style={styles.container}>
         <Content>
-          <SignUpForm createUser={createUser} gotoLogin={gotoLogin} gotoHome={gotoHome}/>
+          <SignUpForm onSubmit={onSubmit} gotoLogin={gotoLogin} gotoHome={gotoHome}/>
         </Content>
       </Container>
     );
