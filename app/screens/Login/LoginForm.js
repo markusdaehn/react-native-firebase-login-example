@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, View, Text, Form } from 'native-base';
+import { Button, Text, View } from 'native-base';
 import { EmailField, PasswordField, reduxForm } from '../../components/redux-form'
 import styles from './styles';
 import validate from './validate';
@@ -9,22 +9,32 @@ export class LoginForm extends Component {
     super(props);
   }
 
+  componentWillMount() {
+    // @NOTE: This is because the state is being initialized when application is loaded
+    this.props.reset();
+  }
+
   render() {
-    const { submitLogin, gotoSignUp } = this.props;
+    const { submitLogin, gotoSignUp, pristine, submitting } = this.props;
     return (
-      <Form behavior='padding' style={styles.bg}>
+      <View behavior='padding' style={styles.bg}>
         <EmailField returnKeyType='next' onSubmitEditing={() => {this.refs.password.focus()}}/>
         <PasswordField ref='password' returnKeyType='go' onSubmitEditing={() => {submitLogin()}}/>
-        <Button style={styles.btn} onPress={submitLogin}>
+        <Button
+          style={styles.btn}
+          onPress={submitLogin}
+          disabled={pristine || submitting}
+        >
           <Text>Login</Text>
         </Button>
         <Button
           style={styles.btn}
           onPress={gotoSignUp}
+          disabled={submitting}
         >
-          <Text>New here?</Text>
+          <Text>New to Yuzsa?</Text>
         </Button>
-      </Form>
+      </View>
     );
   }
 }

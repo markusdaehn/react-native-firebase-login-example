@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { TextInput } from 'react-native';
 import { Field } from 'redux-form';
 import { Item, Icon, Input, Text } from 'native-base';
-import { reduxForm as rf, SubmissionError as serr } from 'redux-form';
+import { reduxForm as rf, SubmissionError as serr, Form as fm} from 'redux-form';
 
 export const reduxForm = rf;
 export const SubmissionError = serr;
+export const Form = fm;
 
-export const ErrorMessage = ({error}) => {
-  if(error === undefined) return <Text />
+export const ErrorMessage = ({error, touched}) => {
+  if(error === undefined || !touched) return <Text />
 
   return (
     <Item style={{ borderColor: 'transparent' }}>
@@ -24,9 +25,9 @@ export class FormInput extends Component {
   }
 
   render() {
-    let { input, name, icon, meta: {error}, ...inputProps} = this.props;
+    let { input, icon, meta: {error, touched}, ...inputProps} = this.props;
     return (
-      <Item error={error !== undefined}>
+      <Item error={error !== undefined && touched}>
         <Icon active name={icon} />
         <Input
           ref='input'
@@ -36,7 +37,7 @@ export class FormInput extends Component {
           onFocus={input.onFocus}
           value={input.value}
         />
-        <ErrorMessage error={error} />
+        <ErrorMessage error={error} touched={touched}/>
       </Item>
     );
   }

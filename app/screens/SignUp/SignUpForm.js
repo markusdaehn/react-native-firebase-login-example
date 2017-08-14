@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button, View, Text, Form } from 'native-base';
-import { EmailField, PasswordField, reduxForm } from '../../components/redux-form';
+import { Button, View, Text } from 'native-base';
+import { EmailField, PasswordField, reduxForm, Form } from '../../components/redux-form';
 import styles from './styles';
 import validate from './validate';
 
@@ -9,11 +9,16 @@ export class SignUpForm extends Component {
     super(props);
   }
 
+  componentWillMount() {
+    // @NOTE: This is because the state is being initialized when application is loaded
+    this.props.reset();
+  }
+
   render() {
-    const { handleSubmit, gotoLogin, onSubmit} = this.props;
+    const { handleSubmit, gotoLogin, pristine, submitting, onSubmit } = this.props;
 
     return (
-      <Form behavior='padding'>
+      <View behavior='padding'>
         <EmailField
           ref='email'
           returnKeyType='next'
@@ -27,16 +32,18 @@ export class SignUpForm extends Component {
         <Button
           style={styles.btn}
           onPress={handleSubmit(onSubmit)}
+          disabled={pristine || submitting}
         >
           <Text>SignUp</Text>
         </Button>
         <Button
           style={styles.btn}
           onPress={gotoLogin}
+          disabled={submitting}
         >
           <Text>Got an Account?</Text>
         </Button>
-      </Form>
+      </View>
     );
   }
 }

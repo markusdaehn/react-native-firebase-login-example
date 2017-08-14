@@ -16,7 +16,7 @@ export default class SignUp extends Component {
 
     return (
       <Container style={styles.container}>
-        <Content>
+        <Content keyboardShouldPersistTaps='handled'>
           <SignUpForm onSubmit={onSubmit} gotoLogin={gotoLogin} gotoHome={gotoHome}/>
         </Content>
       </Container>
