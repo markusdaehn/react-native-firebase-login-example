@@ -28,7 +28,6 @@ export class FormInput extends Component {
     let { input, icon, meta: {error, touched}, ...inputProps} = this.props;
     return (
       <Item error={error !== undefined && touched}>
-        <Icon active name={icon} />
         <Input
           ref='input'
           {...inputProps}
@@ -37,8 +36,34 @@ export class FormInput extends Component {
           onFocus={input.onFocus}
           value={input.value}
         />
-        <ErrorMessage error={error} touched={touched}/>
       </Item>
+    );
+  }
+}
+
+export class TextField extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  focus() {
+    //@NOTE: Bug with nativebase not having focus. Need to access _root.
+    this.refs.text.getRenderedcomponent().refs.input._root.focus();
+  }
+
+  render() {
+    const {name, placeholder, ...otherProps} = this.props;
+
+    return (
+      <Field
+      name={name || 'text'}
+      ref='text'
+      withRef
+      placeholder={placeholder || 'ENTER TEXT'}
+      autoCorrect={false}
+      component={FormInput}
+      {...otherProps}
+      />
     );
   }
 }
@@ -59,8 +84,7 @@ export class EmailField extends Component {
         name='email'
         ref='email'
         withRef
-        icon='person'
-        placeholder='EMAIL'
+        placeholder='Your email address'
         keyboardType="email-address"
         autoCorrect={false}
         autoCapitalize={'none'}
@@ -82,15 +106,14 @@ export class PasswordField extends Component {
   }
 
   render() {
-    const { name, icon, placeholder, ...otherProps } = this.props;
+    const { name, placeholder, ...otherProps } = this.props;
 
     return (
       <Field
         name={name || 'password'}
         ref='password'
         withRef
-        icon={icon || 'unlock'}
-        placeholder={placeholder || 'PASSWORD'}
+        placeholder={placeholder || 'Yuzsa password'}
         secureTextEntry
         component={FormInput}
         {...otherProps}

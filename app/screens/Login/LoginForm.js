@@ -18,8 +18,16 @@ export class LoginForm extends Component {
     const { submitLogin, gotoSignUp, pristine, submitting } = this.props;
     return (
       <View behavior='padding' style={styles.bg}>
-        <EmailField returnKeyType='next' onSubmitEditing={() => {this.refs.password.focus()}}/>
-        <PasswordField ref='password' returnKeyType='go' onSubmitEditing={() => {submitLogin()}}/>
+        <EmailField
+          ref='email'
+          returnKeyType='next'
+          onSubmitEditing={() => {this.refs.password.focus()}}
+        />
+        <PasswordField
+          ref='password'
+          returnKeyType='go'
+          onSubmitEditing={() => {submitLogin()}}
+        />
         <Button
           style={styles.btn}
           onPress={submitLogin}
