@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import { TextInput } from 'react-native';
 import { Field } from 'redux-form';
 import { Item, Icon, Input, Text } from 'native-base';
-import { reduxForm as rf, SubmissionError as serr, Form as fm} from 'redux-form';
 
-export const reduxForm = rf;
-export const SubmissionError = serr;
-export const Form = fm;
-
+export { reduxForm, SubmissionError, Form } from 'redux-form';
 export const ErrorMessage = ({error, touched}) => {
   if(error === undefined || !touched) return <Text />
 
@@ -18,7 +14,6 @@ export const ErrorMessage = ({error, touched}) => {
     </Item>
   );
 }
-
 export class FormInput extends Component {
   constructor(props) {
     super(props);
@@ -40,7 +35,6 @@ export class FormInput extends Component {
     );
   }
 }
-
 export class TextField extends Component {
   constructor(props) {
     super(props);
@@ -67,7 +61,6 @@ export class TextField extends Component {
     );
   }
 }
-
 export class EmailField extends Component {
   constructor(props) {
     super(props);
@@ -94,7 +87,6 @@ export class EmailField extends Component {
     );
   }
 }
-
 export class PasswordField extends Component {
   constructor(props) {
     super(props);
