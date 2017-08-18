@@ -3,57 +3,12 @@
 
     <item
         is-multidex="false"
-        jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="c5526d30278eb171f4a1325bd6b927c9057c91f4">
-        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.46.4_b08c4eca6d00ec9237cadb92032bc48a3aec9e37.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/home/markus/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.6.0/3f9b16b774f2c36cfd86dd2053d0b3059531dacc/okhttp-urlconnection-3.6.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="3f9b16b774f2c36cfd86dd2053d0b3059531dacc">
         <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.6.0_617836bcbc5bc1e013b5d3232d893bb2a6fd744f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="5a61f17cd72e20aa4323cbf5f909b7c609619275">
-        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.0.1_b652e6917fa2b58f90a108d4b4f64917a104e892.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/markus/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="6975da39a7040257bd51d21a231b76c915872d38">
-        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_3fd90a3973efd21d2aa94d58e638078e8c97fe3d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/jars/libs/infer-annotations-4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
-        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_74d99d64b34e837ad64a0956d3b37b378d3e0558.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/markus/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
-        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_0bba4bb9fd846167cfc1b01ff2a7e42543de3a14.jar" />
     </item>
     <item
         is-multidex="false"
@@ -75,15 +30,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1_b5ca35ac8beeacc93f72052f78e99670a6f88cee.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/home/markus/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.6.0/69edde9fc4b01c9fd51d25b83428837478c27254/okhttp-3.6.0.jar"
         jumboMode="false"
         optimize="true"
@@ -93,39 +39,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/markus/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
-        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_a85f7eb8d3c2d3c3c23d2f0ea5379390c5193ea0.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
         <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_f0e6d5c7ce8a910c744c1b60c2bc748d476a1280.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/markus/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
-        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/okio-1.13.0_90b07a62fafeb593e5235c925e37e07f25a346d1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/yuzsa/react-native-vector-icons/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="7a2bbc9635906f8cbbbd14c053ac24efdd3a95c5">
-        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/yuzsa-react-native-vector-icons-unspecified_a24909e3961c21c4c511098e42b24479e9e0f199.jar" />
     </item>
     <item
         is-multidex="false"
@@ -147,21 +66,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
-        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_bfbce11da55ab66509693dacd09d819604b98ed6.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/home/markus/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
         <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1_224e4238a5bb16feeadf844062e592d0772a3836.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.47.1/jars/libs/infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_300941ca4901c54680a5787db9a02618db23b1a0.jar" />
     </item>
     <item
         is-multidex="false"
@@ -183,21 +102,102 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="050f688115ea65a0292d8483a6ffe6bcdab1e2ef">
-        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.0.1_06600306cc3a68c537ffa7e89c399513db24a260.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
         <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.0.1_bcd63db32a51eec0089eaf3d5fe5a6d4fcb0587f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5a61f17cd72e20aa4323cbf5f909b7c609619275">
+        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.0.1_b652e6917fa2b58f90a108d4b4f64917a104e892.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.47.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="576b5113887747a7592650ae14d980e1c57983c4">
+        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.47.1_df147e74e1d9e032bc0fd17abf83b458cefe16d9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/markus/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_3fd90a3973efd21d2aa94d58e638078e8c97fe3d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/markus/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_0bba4bb9fd846167cfc1b01ff2a7e42543de3a14.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1_b5ca35ac8beeacc93f72052f78e99670a6f88cee.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/markus/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
+        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_a85f7eb8d3c2d3c3c23d2f0ea5379390c5193ea0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/markus/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/okio-1.13.0_90b07a62fafeb593e5235c925e37e07f25a346d1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/yuzsa/react-native-vector-icons/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d801740e83d62321832d14bb52dd4a0e56b73f11">
+        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/yuzsa-react-native-vector-icons-unspecified_a24909e3961c21c4c511098e42b24479e9e0f199.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
+        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_bfbce11da55ab66509693dacd09d819604b98ed6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="050f688115ea65a0292d8483a6ffe6bcdab1e2ef">
+        <dex dex="/home/markus/sdf/yuzsa/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.0.1_06600306cc3a68c537ffa7e89c399513db24a260.jar" />
     </item>
 
 </items>

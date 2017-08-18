@@ -21,13 +21,13 @@ ADDED from /home/markus/sdf/yuzsa/android/app/src/main/AndroidManifest.xml:6:5-6
 		ADDED from /home/markus/sdf/yuzsa/android/app/src/main/AndroidManifest.xml:6:22-64
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
 ADDED from /home/markus/sdf/yuzsa/android/app/src/main/AndroidManifest.xml:7:5-77
-MERGED from [com.facebook.react:react-native:0.46.4] /home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/AndroidManifest.xml:11:5-78
+MERGED from [com.facebook.react:react-native:0.47.1] /home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.47.1/AndroidManifest.xml:11:5-78
 	android:name
 		ADDED from /home/markus/sdf/yuzsa/android/app/src/main/AndroidManifest.xml:7:22-75
 uses-sdk
 ADDED from /home/markus/sdf/yuzsa/android/app/src/main/AndroidManifest.xml:9:5-11:41
 MERGED from [yuzsa:react-native-vector-icons:unspecified] /home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/yuzsa/react-native-vector-icons/unspecified/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.46.4] /home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.47.1] /home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.47.1/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:23.0.1] /home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.0.1] /home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/AndroidManifest.xml:20:5-43
 MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/AndroidManifest.xml:14:5-16:41
@@ -48,7 +48,7 @@ MERGED from [com.facebook.soloader:soloader:0.1.0] /home/markus/sdf/yuzsa/androi
 		INJECTED from /home/markus/sdf/yuzsa/android/app/src/main/AndroidManifest.xml
 application
 ADDED from /home/markus/sdf/yuzsa/android/app/src/main/AndroidManifest.xml:13:5-30:19
-MERGED from [com.facebook.react:react-native:0.46.4] /home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.react:react-native:0.47.1] /home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.47.1/AndroidManifest.xml:13:5-20
 MERGED from [com.android.support:appcompat-v7:23.0.1] /home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.0.1] /home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/AndroidManifest.xml:22:5-20
 MERGED from [com.facebook.soloader:soloader:0.1.0] /home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/AndroidManifest.xml:3:3-17
