@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Content } from 'native-base';
+import { ScrollView, KeyboardAvoidingView } from 'react-native';
 import SignUpForm from './SignUpForm';
 import styles from './styles';
 import onSubmit from './submit';
@@ -15,11 +15,11 @@ export default class SignUp extends Component {
     const gotoHome = () => this.props.navigation.navigate('Home');
 
     return (
-      <Container style={styles.container}>
-        <Content keyboardShouldPersistTaps='handled'>
+      <ScrollView style={styles.container}>
+        <KeyboardAvoidingView keyboardShouldPersistTaps='handled'>
           <SignUpForm onSubmit={onSubmit} gotoLogin={gotoLogin} gotoHome={gotoHome}/>
-        </Content>
-      </Container>
+        </KeyboardAvoidingView>
+      </ScrollView>
     );
   }
 }

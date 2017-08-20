@@ -1,34 +1,37 @@
+import React from 'react';
+import MainDrawerRouter from '../routers/MainDrawerRouter';
 import Login from '../screens/Login';
-import Home from '../screens/Home';
 import SignUp from '../screens/SignUp';
-import BlankPage from '../screens/BlankPage';
 import { StackNavigator } from "react-navigation";
+import { Icon, Button } from 'react-native-elements';
 
-export default (StackNav = StackNavigator({
+export default StackNavigator({
+  Main: {
+    screen: MainDrawerRouter,
+    navigationOptions: ({navigation}) => {
+      const {navigate} = navigation;
+      const openDrawer = () => navigate('DrawerOpen');
+
+      return {
+        title: 'Yuzsa',
+        headerRight: (
+          <Button transparent onPress={openDrawer}>
+            <Icon name='menu' />
+          </Button>
+        ),
+      }
+    }
+  },
   Login: {
     screen: Login,
     navigationOptions: {
-      title: 'Login'
-    },
-  },
-  Home: {
-    screen: Home,
-    navigationOptions: {
-      title: 'Home'
-    },
-  },
-  BlankPage: {
-    screen: BlankPage,
-    navigationOptions: {
-      title: 'Blank Page'
+      title: 'Login',
     },
   },
   SignUp: {
     screen: SignUp,
     navigationOptions: {
-      title: 'Sign Up'
+      title: 'Sign Up',
     }
   },
-}, {
-  headerMode: 'none'
-}));
+});

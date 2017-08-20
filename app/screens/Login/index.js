@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { KeyboardAvoidingView, Image } from 'react-native';
-import { Container, Content } from 'native-base';
+import { KeyboardAvoidingView, ScrollView, Image } from 'react-native';
 import LoginForm from './LoginForm';
 import styles from './styles';
 
@@ -11,15 +10,13 @@ export default class Login extends Component {
     const submitLogin = () => this.props.navigation.navigate('Home');
     const gotoSignUp = () => this.props.navigation.navigate('SignUp')
     return (
-      <Container>
+      <ScrollView>
         <KeyboardAvoidingView style={styles.container}>
-          <Content>
-            <Image source={background} style={styles.shadow}>
-              <LoginForm submitLogin={submitLogin} gotoSignUp={gotoSignUp}/>
-            </Image>
-          </Content>
+          <Image source={background} style={styles.shadow}>
+            <LoginForm submitLogin={submitLogin} gotoSignUp={gotoSignUp}/>
+          </Image>
         </KeyboardAvoidingView>
-      </Container>
+      </ScrollView>
     );
   }
 }

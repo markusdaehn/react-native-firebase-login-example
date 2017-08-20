@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import { Button, View, Text } from 'native-base';
+import { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Button, View, Text } from 'react-native';
 import { EmailField, PasswordField, TextField, reduxForm, Form } from '../../components/redux-form';
 import styles from './styles';
 import validate from './validate';
@@ -56,7 +57,7 @@ export class SignUpForm extends Component {
 }
 
 SignUpForm.propTypes = {
-  gotoLogin: React.PropTypes.func,
+  gotoLogin: PropTypes.func,
 }
 
 export default reduxForm({

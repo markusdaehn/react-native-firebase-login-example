@@ -1,29 +1,19 @@
-import React, { Component } from 'react';
-import { TextInput } from 'react-native';
+import { Component } from 'react';
+import { Text } from 'react-native';
 import { Field } from 'redux-form';
-import { Item, Icon, Input, Text } from 'native-base';
+import { FormInput } from 'react-native-elements';
 
 export { reduxForm, SubmissionError, Form } from 'redux-form';
-export const ErrorMessage = ({error, touched}) => {
-  if(error === undefined || !touched) return <Text />
 
-  return (
-    <Item style={{ borderColor: 'transparent' }}>
-      <Icon active style={{ color: 'red', marginTop: 5 }} name='bug' />
-      <Text style={{ fontSize: 15, color: 'red' }}>{error}</Text>
-    </Item>
-  );
-}
-export class FormInput extends Component {
+export class Input extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    let { input, icon, meta: {error, touched}, ...inputProps} = this.props;
+    let { input, meta: {error, touched}, ...inputProps} = this.props;
     return (
-      <Item error={error !== undefined && touched}>
-        <Input
+        <FormInput
           ref='input'
           {...inputProps}
           onChangeText={input.onChange}
@@ -31,7 +21,6 @@ export class FormInput extends Component {
           onFocus={input.onFocus}
           value={input.value}
         />
-      </Item>
     );
   }
 }
@@ -41,8 +30,7 @@ export class TextField extends Component {
   }
 
   focus() {
-    //@NOTE: Bug with nativebase not having focus. Need to access _root.
-    this.refs.text.getRenderedcomponent().refs.input._root.focus();
+    this.refs.text.getRenderedcomponent().refs.input.focus();
   }
 
   render() {
@@ -53,9 +41,9 @@ export class TextField extends Component {
       name={name || 'text'}
       ref='text'
       withRef
-      placeholder={placeholder || 'ENTER TEXT'}
+      placeholder={placeholder || 'Enter text'}
       autoCorrect={false}
-      component={FormInput}
+      component={Input}
       {...otherProps}
       />
     );
@@ -67,8 +55,7 @@ export class EmailField extends Component {
   }
 
   focus() {
-    //@NOTE: Bug with nativebase not having focus. Need to access _root.
-    this.refs.email.getRenderedComponent().refs.input._root.focus();
+    this.refs.email.getRenderedComponent().refs.input.focus();
   }
 
   render() {
@@ -81,7 +68,7 @@ export class EmailField extends Component {
         keyboardType="email-address"
         autoCorrect={false}
         autoCapitalize={'none'}
-        component={FormInput}
+        component={Input}
         {...this.props}
       />
     );
@@ -93,8 +80,7 @@ export class PasswordField extends Component {
   }
 
   focus() {
-    //@NOTE: Bug with nativebase not having focus. Need to access _root.
-    this.refs.password.getRenderedComponent().refs.input._root.focus();
+    this.refs.password.getRenderedComponent().refs.input.focus();
   }
 
   render() {
@@ -105,9 +91,9 @@ export class PasswordField extends Component {
         name={name || 'password'}
         ref='password'
         withRef
-        placeholder={placeholder || 'Yuzsa password'}
+        placeholder={placeholder || 'Enter a password'}
         secureTextEntry
-        component={FormInput}
+        component={Input}
         {...otherProps}
       />
     );
