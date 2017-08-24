@@ -6,7 +6,7 @@ import { DrawerNavigator, DrawerItems, addNavigationHelpers } from 'react-naviga
 import Home from '../screens/Home';
 import Blank from '../screens/Blank';
 
-export const MainDrawerRouter = DrawerNavigator({
+export const MainDrawerNavigator = DrawerNavigator({
     Home: {
       screen: Home,
       navigationOptions: {
@@ -29,11 +29,11 @@ export const MainDrawerRouter = DrawerNavigator({
     ),
   });
 
-  const MainDrawerRouterWithNavigationState = ({dispatch, navState}) => (
-    <MainDrawerRouter navigation={addNavigationHelpers({dispatch, state: navState })} />
+  const MainDrawerNavigatorWithNavigationState = ({dispatch, navState}) => (
+    <MainDrawerNavigator navigation={addNavigationHelpers({dispatch, state: navState })} />
   );
 
-  MainDrawerRouterWithNavigationState.propTypes = {
+  MainDrawerNavigatorWithNavigationState.propTypes = {
     navState: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
   }
@@ -42,4 +42,4 @@ export const MainDrawerRouter = DrawerNavigator({
     navState: state.mainNav,
   });
 
-  export default connect(mapStateToProps)(MainDrawerRouterWithNavigationState);
+  export default connect(mapStateToProps)(MainDrawerNavigatorWithNavigationState);

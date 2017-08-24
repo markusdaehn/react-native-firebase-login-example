@@ -1,22 +1,22 @@
 import {NavigationActions} from 'react-navigation';
-import {RootStackRouter} from '../routers/RootStackRouter';
+import {RootStackNavigator} from '../navigators/RootStackNavigator';
 
 
-const mainAction = RootStackRouter.router.getActionForPathAndParams('Main');
-const initialState = RootStackRouter.router.getStateForAction(mainAction);
+const mainAction = RootStackNavigator.router.getActionForPathAndParams('Main');
+const initialState = RootStackNavigator.router.getStateForAction(mainAction);
 
 export default function rootNav(state = initialState, action) {
   let newState;
 
   switch(action.type) {
     case 'Login':
-      newState = RootStackRouter.router.getStateForAction(
+      newState = RootStackNavigator.router.getStateForAction(
         NavigationActions.back(),
         state
       );
       break;
     case 'Logout':
-      newState = RootStackRouter.router.getStateForAction(
+      newState = RootStackNavigator.router.getStateForAction(
         NavigationActions.reset({
           index: 0,
           actions: [
@@ -28,7 +28,7 @@ export default function rootNav(state = initialState, action) {
 
       break;
     default:
-      newState = RootStackRouter.router.getStateForAction(action, state);
+      newState = RootStackNavigator.router.getStateForAction(action, state);
       break;
   }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import MainDrawerRouter from '../routers/MainDrawerRouter';
+import MainDrawerRouter from './MainDrawerNavigator';
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
 import { StackNavigator, addNavigationHelpers } from "react-navigation";
@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 
-export const RootStackRouter = StackNavigator({
+export const RootStackNavigator = StackNavigator({
   Main: {
     screen: MainDrawerRouter,
   },
@@ -30,7 +30,7 @@ export const RootStackRouter = StackNavigator({
 
 // @NOTE: Hookup root navigation to Redux
 const RootStackNavigatorWithNavigationState = ({dispatch, navState}) => (
-  <RootStackRouter navigation={addNavigationHelpers({dispatch, state: navState})}/>
+  <RootStackNavigator navigation={addNavigationHelpers({dispatch, state: navState})}/>
 );
 
 RootStackNavigatorWithNavigationState.propTypes = {
