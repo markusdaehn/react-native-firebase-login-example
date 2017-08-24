@@ -1,23 +1,45 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
-import { DrawerNavigator, DrawerItems } from 'react-navigation';
+import PropTypes from 'prop-types';
+import {ScrollView, Button} from 'react-native';
+import {connect} from 'react-redux';
+import { DrawerNavigator, DrawerItems, addNavigationHelpers } from 'react-navigation';
 import Home from '../screens/Home';
 import Blank from '../screens/Blank';
 
-export default MainDrawerRouter = DrawerNavigator({
+export const MainDrawerRouter = DrawerNavigator({
     Home: {
       screen: Home,
-      title: 'Home'
+      navigationOptions: {
+        drawerLabel: 'Home',
+      },
     },
     Blank: {
       screen: Blank,
-      title: 'Blank Screen'
+      navigationOptions: {
+        drawerLabel: 'Blank',
+      },
     }
   }, {
     drawerPosition: 'left',
+    headerMode: 'screen',
     contentComponent: props => (
       <ScrollView>
         <DrawerItems {...props} />
       </ScrollView>
-    )
+    ),
   });
+
+  const MainDrawerRouterWithNavigationState = ({dispatch, navState}) => (
+    <MainDrawerRouter navigation={addNavigationHelpers({dispatch, state: navState })} />
+  );
+
+  MainDrawerRouterWithNavigationState.propTypes = {
+    navState: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+  }
+
+  const mapStateToProps = (state) => ({
+    navState: state.mainNav,
+  });
+
+  export default connect(mapStateToProps)(MainDrawerRouterWithNavigationState);

@@ -2,36 +2,44 @@ import React from 'react';
 import MainDrawerRouter from '../routers/MainDrawerRouter';
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
-import { StackNavigator } from "react-navigation";
+import { StackNavigator, addNavigationHelpers } from "react-navigation";
 import { Icon, Button } from 'react-native-elements';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-export default StackNavigator({
+
+export const RootStackRouter = StackNavigator({
   Main: {
     screen: MainDrawerRouter,
-    navigationOptions: ({navigation}) => {
-      const {navigate} = navigation;
-      const openDrawer = () => navigate('DrawerOpen');
-
-      return {
-        title: 'Yuzsa',
-        headerRight: (
-          <Button transparent onPress={openDrawer}>
-            <Icon name='menu' />
-          </Button>
-        ),
-      }
-    }
   },
   Login: {
     screen: Login,
     navigationOptions: {
-      title: 'Login',
+      headerTitle: 'Login',
     },
   },
   SignUp: {
     screen: SignUp,
     navigationOptions: {
-      title: 'Sign Up',
+      headerTitle: 'Sign Up',
     }
   },
+}, {
+  headerMode: 'none'
 });
+
+// @NOTE: Hookup root navigation to Redux
+const RootStackNavigatorWithNavigationState = ({dispatch, navState}) => (
+  <RootStackRouter navigation={addNavigationHelpers({dispatch, state: navState})}/>
+);
+
+RootStackNavigatorWithNavigationState.propTypes = {
+  navState: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  navState: state.rootNav
+});
+
+export default connect(mapStateToProps)(RootStackNavigatorWithNavigationState);

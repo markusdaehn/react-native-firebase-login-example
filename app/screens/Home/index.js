@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
-import { ScrollView } from 'react-native';
+import {logout} from '../../actions/auth';
+import {navigate} from '../../actions/navigation';
+import { ScrollView, Button } from 'react-native';
 import { Grid, Row, Icon, List, ListItem } from 'react-native-elements';
-
-
-import { setIndex } from '../../actions/list';
 import styles from './styles';
 
 class Home extends Component {
 
   render() {
-    const {logout, gotoScreen} = this.props;
+    const {logout, navigate} = this.props;
     return (
       <ScrollView style={styles.container}>
         <List style={styles.mt}>
           {
-            this.props.list.map((item, i) => (
-              <ListItem key={i} title={item} onPress={() => gotoScreen('Blank', {name: { item }})} />
+            this.props.list.map((name, i) => (
+              <ListItem key={i} title={name} onPress={() => navigate({routeName:'Blank', params:{name}})} />
             ))
           }
         </List>
@@ -28,31 +26,19 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  name: PropTypes.string,
   logout: PropTypes.func,
+  gotoScreen: PropTypes.func,
   list: PropTypes.arrayOf(PropTypes.string),
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    gotoScreen: (screen, params) => {
-      return dispatch(
-        NavigationActions.navigate({routeName: screen, params})
-      );
-    },
-    logout: () => {
-      return dispatch(
-        NavigationActions.reset({
-          index: 0,
-          actions: [NavigationActions.navigate({ routeName: 'Home' })]
-        })
-      );
-    }
+    navigate: ({routeName, params}) => dispatch(navigate({routeName, params})),
+    logout: () => dispatch(logout()),
   };
 }
 
 const mapStateToProps = state => ({
-  name: state.user.name,
   list: state.list.list
 });
 

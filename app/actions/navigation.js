@@ -1,1 +1,3 @@
-export { NavigationActions } from 'react-navigation';
+import {  NavigationActions  } from 'react-navigation';
+
+export const {back, navigate, reset} = NavigationActions;
