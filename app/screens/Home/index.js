@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {logout} from '../../actions/auth';
-import {navigate} from '../../actions/navigation';
+import {logout} from '../../state/actions/auth';
+import {navigate} from '../../state/actions/navigation';
 import { ScrollView, Button } from 'react-native';
 import { Grid, Row, Icon, List, ListItem } from 'react-native-elements';
 import styles from './styles';

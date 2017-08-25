@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { persistStore, autoRehydrate } from 'redux-persist';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';
-import reducer from './reducers';
+import reducer from '../state/reducers';
 
 export default function configureStore(onCompletion:()=>void):any {
   const enhancer = compose(
@@ -17,7 +17,7 @@ export default function configureStore(onCompletion:()=>void):any {
   const store = autoRehydrate()(createStore)(reducer, enhancer);
 
   persistStore(store, {
-    blacklist: ['logs', 'mainNav', 'rootNav', 'navigation'],
+    blacklist: ['logs', 'navigation'],
     storage: AsyncStorage,
     debounce: 50
   }, onCompletion);

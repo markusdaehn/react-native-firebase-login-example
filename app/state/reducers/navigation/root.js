@@ -1,5 +1,5 @@
 import {NavigationActions} from 'react-navigation';
-import {RootStackNavigator} from '../../navigators/RootStackNavigator';
+import {RootStackNavigator} from '../../../navigators/RootStackNavigator';
 
 
 const mainAction = RootStackNavigator.router.getActionForPathAndParams('Main');
