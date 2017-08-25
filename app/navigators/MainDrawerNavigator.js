@@ -39,7 +39,7 @@ export const MainDrawerNavigator = DrawerNavigator({
   }
 
   const mapStateToProps = (state) => ({
-    navState: state.mainNav,
+    navState: state.navigation.main,
   });
 
   export default connect(mapStateToProps)(MainDrawerNavigatorWithNavigationState);
