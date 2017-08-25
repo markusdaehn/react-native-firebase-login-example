@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { KeyboardAvoidingView, ScrollView, Image } from 'react-native';
-import LoginForm from './LoginForm';
+import SignInForm from './SignInForm';
 import styles from './styles';
 
 const background = require('../../../images/login-bg.png');
 
-export default class Login extends Component {
+export default class SignIn extends Component {
   render() {
-    const submitLogin = () => this.props.navigation.navigate('Home');
+    const signIn = () => this.props.navigation.navigate('Home');
     const gotoSignUp = () => this.props.navigation.navigate('SignUp')
     return (
       <ScrollView>
         <KeyboardAvoidingView style={styles.container}>
           <Image source={background} style={styles.shadow}>
-            <LoginForm submitLogin={submitLogin} gotoSignUp={gotoSignUp}/>
+            <SignInForm signIn={signIn} gotoSignUp={gotoSignUp}/>
           </Image>
         </KeyboardAvoidingView>
       </ScrollView>

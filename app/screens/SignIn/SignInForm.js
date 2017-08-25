@@ -5,18 +5,13 @@ import { EmailField, PasswordField, reduxForm } from '../../components/redux-for
 import styles from './styles';
 import validate from './validate';
 
-export class LoginForm extends Component {
+export class SignInForm extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentWillMount() {
-    // @NOTE: This is because the state is being initialized when application is loaded
-    this.props.reset();
-  }
-
   render() {
-    const { submitLogin, gotoSignUp, pristine, submitting } = this.props;
+    const { signIn, gotoSignUp, pristine, submitting } = this.props;
     return (
       <View behavior='padding' style={styles.bg}>
         <EmailField
@@ -27,20 +22,12 @@ export class LoginForm extends Component {
         <PasswordField
           ref='password'
           returnKeyType='go'
-          onSubmitEditing={() => {submitLogin()}}
+          onSubmitEditing={() => {signIn()}}
         />
-        <Button
-          style={styles.btn}
-          onPress={submitLogin}
-          disabled={pristine || submitting}
-        >
-          <Text>Login</Text>
+        <Button style={styles.btn} onPress={signIn} disabled={pristine || submitting}>
+          <Text>Sign in</Text>
         </Button>
-        <Button
-          style={styles.btn}
-          onPress={gotoSignUp}
-          disabled={submitting}
-        >
+        <Button style={styles.btn} onPress={gotoSignUp} disabled={submitting}>
           <Text>New to Yuzsa?</Text>
         </Button>
       </View>
@@ -48,12 +35,12 @@ export class LoginForm extends Component {
   }
 }
 
-LoginForm.propTypes = {
-  submitLogin: PropTypes.func,
+SignInForm.propTypes = {
+  signIn: PropTypes.func,
   gotoSignUp: PropTypes.func
 };
 
 export default reduxForm({
     form: 'login',
     validate
-  })(LoginForm);
+  })(SignInForm);

@@ -1,6 +1,6 @@
 import React from 'react';
 import MainDrawerRouter from './MainDrawerNavigator';
-import Login from '../screens/Login';
+import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
 import { StackNavigator, addNavigationHelpers } from "react-navigation";
 import { Icon, Button } from 'react-native-elements';
@@ -12,10 +12,10 @@ export const RootStackNavigator = StackNavigator({
   Main: {
     screen: MainDrawerRouter,
   },
-  Login: {
-    screen: Login,
+  SignIn: {
+    screen: SignIn,
     navigationOptions: {
-      headerTitle: 'Login',
+      headerTitle: 'Sign In',
     },
   },
   SignUp: {
