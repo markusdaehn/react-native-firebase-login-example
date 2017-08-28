@@ -1,11 +1,7 @@
 import {NavigationActions} from 'react-navigation';
 import {RootStackNavigator} from '../../../navigators/RootStackNavigator';
 
-
-const mainAction = RootStackNavigator.router.getActionForPathAndParams('Main');
-const initialState = RootStackNavigator.router.getStateForAction(mainAction);
-
-export default function rootNav(state = initialState, action) {
+export default function rootNav(state, action) {
   let newState;
 
   switch(action.type) {

@@ -24,10 +24,18 @@ export class SignInForm extends Component {
           returnKeyType='go'
           onSubmitEditing={() => {signIn()}}
         />
-        <Button style={styles.btn} onPress={signIn} disabled={pristine || submitting}>
+        <Button
+          style={styles.btn}
+          onPress={signIn}
+          disabled={pristine || submitting}
+        >
           <Text>Sign in</Text>
         </Button>
-        <Button style={styles.btn} onPress={gotoSignUp} disabled={submitting}>
+        <Button
+          style={styles.btn}
+          onPress={gotoSignUp}
+          disabled={submitting}
+        >
           <Text>New to Yuzsa?</Text>
         </Button>
       </View>
