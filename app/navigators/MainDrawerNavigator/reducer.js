@@ -1,4 +1,4 @@
-import {MainDrawerNavigator} from '../../../navigators/MainDrawerNavigator';
+import {MainDrawerNavigator} from './index';
 
 export default function (state, action) {
   let newState = MainDrawerNavigator.router.getStateForAction(action, state);

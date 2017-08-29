@@ -1,5 +1,5 @@
 import {NavigationActions} from 'react-navigation';
-import {RootStackNavigator} from '../../../navigators/RootStackNavigator';
+import {RootStackNavigator} from './index';
 
 export default function rootNav(state, action) {
   let newState;
