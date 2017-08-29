@@ -1,4 +1,4 @@
-import { auth } from '../../api'
+import { auth } from '../../services/api'
 import { SubmissionError } from '../../components/redux-form';
 
 export default function submit(values, dispatch, props) {
