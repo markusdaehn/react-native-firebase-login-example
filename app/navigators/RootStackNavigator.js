@@ -25,7 +25,7 @@ export const RootStackNavigator = StackNavigator({
     }
   },
 }, {
-  headerMode: 'none'
+  headerMode: 'none',
 });
 
 // @NOTE: Hookup root navigation to Redux
@@ -35,11 +35,11 @@ const RootStackNavigatorWithNavigationState = ({dispatch, navState}) => (
 
 RootStackNavigatorWithNavigationState.propTypes = {
   navState: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => ({
-  navState: state.navigation.root
+  navState: state.navigation.root,
 });
 
 export default connect(mapStateToProps)(RootStackNavigatorWithNavigationState);

@@ -38,6 +38,7 @@
     "redux-form": "^7.0.1",
     "redux-persist": "^4.8.2",
     "redux-promise": "^0.5.3",
+    "redux-saga": "^0.15.6",
     "redux-thunk": "^2.2.0",
     "remote-redux-devtools": "^0.5.12"
   }

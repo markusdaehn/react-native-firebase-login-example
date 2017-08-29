@@ -6,9 +6,7 @@ import { ScrollView, Text, Button } from 'react-native';
 import styles from './styles';
 
 const BlankScreen = ({name, navigation}) => {
-    const text = navigation.state.params.name !== undefined
-    ? navigation.state.params.name
-    : 'Create Something Awesome . . .';
+    const text = name !== undefined ? name: 'Create Something Awesome . . .';
 
   return (
     <ScrollView style={styles.container}>
