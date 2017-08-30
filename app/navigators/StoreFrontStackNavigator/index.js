@@ -21,7 +21,7 @@ StoreFrontStackNavigatorWithNavigationState.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  navState: state.navigation.storefront,
+  navState: state.navigators.storefront,
 });
 
 export default connect(mapStateToProps)(StoreFrontStackNavigatorWithNavigationState);

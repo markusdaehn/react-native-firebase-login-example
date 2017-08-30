@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {logout} from '../../state/actions/auth';
-import {navigate} from '../../state/actions/navigation';
+import {navigate} from '../../navigators/actions';
 import { ScrollView, Button } from 'react-native';
 import { Grid, Row, Icon, List, ListItem } from 'react-native-elements';
 import styles from './styles';
@@ -34,12 +33,12 @@ Home.propTypes = {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     navigate: ({routeName, params}) => dispatch(navigate({routeName, params})),
-    logout: () => dispatch(logout()),
+    logout: () => dispatch(() => alert('Logged out!')),
   };
 }
 
 const mapStateToProps = state => ({
-  list: state.list.list
+  list: state.screens.home.list
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

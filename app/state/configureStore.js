@@ -17,7 +17,7 @@ export default function configureStore(onCompletion:()=>void):any {
   const store = autoRehydrate()(createStore)(reducer, enhancer);
 
   persistStore(store, {
-    blacklist: ['logs', 'navigation'],
+    blacklist: ['logs', 'navigators'],
     storage: AsyncStorage,
     debounce: 50
   }, onCompletion);

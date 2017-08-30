@@ -39,7 +39,7 @@ RootStackNavigatorWithNavigationState.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  navState: state.navigation.root,
+  navState: state.navigators.root,
 });
 
 export default connect(mapStateToProps)(RootStackNavigatorWithNavigationState);

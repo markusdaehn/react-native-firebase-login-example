@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {back} from '../../state/actions/navigation';
+import {back} from '../../navigators/actions';
 import { connect } from 'react-redux';
 import { ScrollView, Text, Button } from 'react-native';
 import styles from './styles';
