@@ -4,6 +4,7 @@ import {ScrollView, Button} from 'react-native';
 import {connect} from 'react-redux';
 import { DrawerNavigator, DrawerItems, addNavigationHelpers } from 'react-navigation';
 import StoreFrontStackNavigator from '../StoreFrontStackNavigator';
+import {getMainNavState} from './selectors';
 
 export const MainDrawerNavigator = DrawerNavigator({
     StoreFront: { screen: StoreFrontStackNavigator },
@@ -27,7 +28,7 @@ export const MainDrawerNavigator = DrawerNavigator({
   }
 
   const mapStateToProps = (state) => ({
-    navState: state.navigators.main,
+    navState: getMainNavState(state),
   });
 
   export default connect(mapStateToProps)(MainDrawerNavigatorWithNavigationState);
