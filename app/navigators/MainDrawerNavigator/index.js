@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import {ScrollView, Button} from 'react-native';
 import {connect} from 'react-redux';
 import { DrawerNavigator, DrawerItems, addNavigationHelpers } from 'react-navigation';
-import StoreFrontStackNavigator from '../StoreFrontStackNavigator';
+import StorefrontStackNavigator from '../StorefrontStackNavigator';
 import {getMainNavState} from './selectors';
 
 export const MainDrawerNavigator = DrawerNavigator({
-    StoreFront: { screen: StoreFrontStackNavigator },
+    StoreFront: { screen: StorefrontStackNavigator },
   }, {
     drawerPosition: 'left',
     headerMode: 'screen',

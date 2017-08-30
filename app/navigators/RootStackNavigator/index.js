@@ -6,6 +6,7 @@ import { StackNavigator, addNavigationHelpers } from "react-navigation";
 import { Icon, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import {getRootNavState} from './selectors';
 
 
 export const RootStackNavigator = StackNavigator({
@@ -39,7 +40,7 @@ RootStackNavigatorWithNavigationState.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  navState: state.navigators.root,
+  navState: getRootNavState(state),
 });
 
 export default connect(mapStateToProps)(RootStackNavigatorWithNavigationState);
