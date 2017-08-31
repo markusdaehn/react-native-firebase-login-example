@@ -1,5 +1,8 @@
-import React from 'react';
-import MainDrawerRouter from '../MainDrawerNavigator';
+import React, {Component}  from 'react';
+import {BackHandler} from 'react-native';
+import MainDrawerNavigator from '../MainDrawerNavigator';
+import header from '../MainDrawerNavigator/components/Header';
+import {back} from '../actions';
 import SignIn from '../../scenes/SignIn';
 import SignUp from '../../scenes/SignUp';
 import { StackNavigator, addNavigationHelpers } from "react-navigation";
@@ -11,28 +14,47 @@ import {getRootNavState} from './selectors';
 
 export const RootStackNavigator = StackNavigator({
   Main: {
-    screen: MainDrawerRouter,
+    screen: MainDrawerNavigator,
   },
   SignIn: {
     screen: SignIn,
     navigationOptions: {
-      headerTitle: 'Sign In',
+      header: () => null,
     },
   },
   SignUp: {
     screen: SignUp,
     navigationOptions: {
-      headerTitle: 'Sign Up',
+      header: () => null,
     }
   },
 }, {
-  headerMode: 'none',
+  headerMode: 'screen',
 });
 
 // @NOTE: Hookup root navigation to Redux
-const RootStackNavigatorWithNavigationState = ({dispatch, navState}) => (
-  <RootStackNavigator navigation={addNavigationHelpers({dispatch, state: navState})}/>
-);
+class RootStackNavigatorWithNavigationState extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.onBackPress.bind(this));
+  }
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress.bind(this));
+  }
+  onBackPress() {
+    const {dispatch, navState} = this.props;
+    dispatch(back())
+    return true;
+  }
+
+  render() {
+    const {dispatch, navState} = this.props;
+    return (<RootStackNavigator navigation={addNavigationHelpers({dispatch, state: navState})}/>);
+  }
+}
 
 RootStackNavigatorWithNavigationState.propTypes = {
   navState: PropTypes.object.isRequired,
@@ -42,5 +64,10 @@ RootStackNavigatorWithNavigationState.propTypes = {
 const mapStateToProps = (state) => ({
   navState: getRootNavState(state),
 });
+
+// const mapDispatchToProps = (dispatch) => ({
+//   back: dispatch(back()),
+//   dispatch,
+// });
 
 export default connect(mapStateToProps)(RootStackNavigatorWithNavigationState);

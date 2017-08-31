@@ -1,34 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ScrollView, Button} from 'react-native';
+import {ScrollView, Button, View, Text} from 'react-native';
+import {Icon} from 'react-native-elements';
 import {connect} from 'react-redux';
 import { DrawerNavigator, DrawerItems, addNavigationHelpers } from 'react-navigation';
-import StorefrontStackNavigator from '../StorefrontStackNavigator';
 import {getMainNavState} from './selectors';
+import header from './components/Header';
+import Home from '../../scenes/Home';
+import Blank from '../../scenes/Blank';
 
 export const MainDrawerNavigator = DrawerNavigator({
-    StoreFront: { screen: StorefrontStackNavigator },
-  }, {
-    drawerPosition: 'left',
-    headerMode: 'screen',
-    contentComponent: props => (
-      <ScrollView>
-        <DrawerItems {...props} />
-      </ScrollView>
-    ),
-  });
+  Home: {
+    screen: Home,
+  },
+  Blank: { screen: Blank },
+}, {
+  drawerPosition: 'left',
+  contentComponent: props => (
+    <ScrollView>
+      <DrawerItems {...props} />
+    </ScrollView>
+  ),
+});
 
-  const MainDrawerNavigatorWithNavigationState = ({dispatch, navState}) => (
-    <MainDrawerNavigator navigation={addNavigationHelpers({dispatch, state: navState })} />
-  );
+const MainDrawerNavigatorWithNavigationState = ({dispatch, navState}) => (
+  <MainDrawerNavigator navigation={addNavigationHelpers({dispatch, state: navState })} />
+);
 
-  MainDrawerNavigatorWithNavigationState.propTypes = {
-    navState: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired,
-  }
+MainDrawerNavigatorWithNavigationState.navigationOptions = {
+  title: 'Good Title',
+  headerStyle: {
+    backgroundColor:'#3498db',
+  },
+  headerTitleStyle: {
+    color: 'white',
+  },
+  headerTintColor: 'white',
+  headerLeft: (props) => <Icon name='menu' onPress={() => alert(JSON.stringfy(props))}/>,
+};
 
-  const mapStateToProps = (state) => ({
-    navState: getMainNavState(state),
-  });
+MainDrawerNavigatorWithNavigationState.propTypes = {
+  navState: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+}
 
-  export default connect(mapStateToProps)(MainDrawerNavigatorWithNavigationState);
+const mapStateToProps = (state) => ({
+  navState: getMainNavState(state),
+});
+
+export default connect(mapStateToProps)(MainDrawerNavigatorWithNavigationState);
