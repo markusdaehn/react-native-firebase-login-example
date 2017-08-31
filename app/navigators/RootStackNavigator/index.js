@@ -52,7 +52,7 @@ class RootStackNavigatorWithNavigationState extends Component {
 
   render() {
     const {dispatch, navState} = this.props;
-    return (<RootStackNavigator navigation={addNavigationHelpers({dispatch, state: navState})}/>);
+    return (<RootStackNavigator navigation={addNavigationHelpers({dispatch, state: navState})} />);
   }
 }
 
