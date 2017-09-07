@@ -25,19 +25,17 @@ export class SignInForm extends Component {
           onSubmitEditing={() => {signIn()}}
         />
         <Button
-          style={styles.btn}
+          title='Sign In'
           onPress={signIn}
           disabled={pristine || submitting}
-        >
-          <Text>Sign in</Text>
-        </Button>
+          accessibilityLabel='Press to submit sign in form'
+        />
         <Button
-          style={styles.btn}
+          title='Sign Up'
           onPress={gotoSignUp}
           disabled={submitting}
-        >
-          <Text>New to Yuzsa?</Text>
-        </Button>
+          accessibilityLabel='Go to sign up screen'
+        />
       </View>
     );
   }

@@ -1,6 +1,6 @@
-import { Component } from 'react';
+import React, {  Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import { EmailField, PasswordField, TextField, reduxForm, Form } from '../../components/redux-form';
 import styles from './styles';
 import validate from './validate';
@@ -16,7 +16,7 @@ export class SignUpForm extends Component {
   }
 
   render() {
-    const { handleSubmit, error, pristine, submitting, onSubmit, gotoLogin } = this.props;
+    const { handleSubmit, error, pristine, submitting, onSubmit, gotoSignIn } = this.props;
     alert('error=' + JSON.stringify(error))
     return (
       <View behavior='padding'>
@@ -38,26 +38,25 @@ export class SignUpForm extends Component {
           onSubmitEditing={handleSubmit(onSubmit)}
         />
         <Button
-          style={styles.btn}
+          title='Sign Up'
           onPress={handleSubmit(onSubmit)}
           disabled={pristine || submitting}
-        >
-          <Text>SignUp</Text>
-        </Button>
+          accessibilityLabel='Press to submit sign up form'
+        />
         <Button
+          title='Got an Account?'
           style={styles.btn}
-          onPress={gotoLogin}
+          onPress={gotoSignIn}
           disabled={submitting}
-        >
-          <Text>Got an Account?</Text>
-        </Button>
+          accessibilityLabel='Press to go to sign in screen'
+        />
       </View>
     );
   }
 }
 
 SignUpForm.propTypes = {
-  gotoLogin: PropTypes.func,
+  gotoSignIn: PropTypes.func,
 }
 
 export default reduxForm({

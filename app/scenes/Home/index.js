@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {navigate} from '../../navigators/actions';
-import { ScrollView, Button } from 'react-native';
+import { ScrollView } from 'react-native';
 import { Grid, Row, Icon, List, ListItem } from 'react-native-elements';
 import styles from './styles';
 

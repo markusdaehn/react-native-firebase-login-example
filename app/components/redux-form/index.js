@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { Field } from 'redux-form';
 import { FormInput } from 'react-native-elements';

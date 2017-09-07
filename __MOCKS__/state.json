@@ -1,0 +1,36 @@
+{
+  "navState": {
+    "index": 0,
+    "routes": [
+      {
+        "index": 0,
+        "key": "inkdjflkj",
+        "routeName": "Main",
+        "routes": [
+          {
+            "index": 1,
+            "key": "DrawerClose",
+            "routeName": "DrawerClose",
+            "routes": [
+              {
+                "key": "Home",
+                "routeName": "Home"
+              },
+              {
+                "key": "Blank",
+                "routeName": "Blank",
+                "params": {
+                  "name": "Redux"
+                }
+              }
+            ]
+          },
+          {
+            "key": "DrawerOpen",
+            "routeName": "DrawerOpen"
+          }
+        ],
+      }
+    ]
+  }
+}

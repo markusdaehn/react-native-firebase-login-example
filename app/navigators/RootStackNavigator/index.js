@@ -1,20 +1,39 @@
 import React, {Component}  from 'react';
-import {BackHandler} from 'react-native';
+import {BackHandler, Platform} from 'react-native';
 import MainDrawerNavigator from '../MainDrawerNavigator';
 import header from '../MainDrawerNavigator/components/Header';
-import {back} from '../actions';
+import { back, navigate } from '../actions';
 import SignIn from '../../scenes/SignIn';
 import SignUp from '../../scenes/SignUp';
 import { StackNavigator, addNavigationHelpers } from "react-navigation";
-import { Icon, Button } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {getRootNavState} from './selectors';
+import {getNavState} from '../selectors';
 
 
 export const RootStackNavigator = StackNavigator({
   Main: {
     screen: MainDrawerNavigator,
+    navigationOptions: ({navigation}) => {
+      return {
+        title: 'Good Title',
+        headerStyle: {
+          backgroundColor:'#3498db',
+        },
+        headerTitleStyle: {
+          color: 'white',
+        },
+        headerTintColor: 'white',
+        headerLeft: <Icon name='menu' color='white' onPress={() => {
+          if(navigation.state.index === 0) {
+            navigation.dispatch(navigate({routeName:'DrawerOpen'}));
+          } else {
+            navigation.dispatch(navigate({routeName:'DrawerClose'}));
+          }
+        }}/>,
+      }
+    },
   },
   SignIn: {
     screen: SignIn,
@@ -37,16 +56,26 @@ class RootStackNavigatorWithNavigationState extends Component {
   constructor(props) {
     super(props);
   }
-
+  isAndroid() {
+    return Platform.OS === 'android';
+  }
   componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.onBackPress.bind(this));
+    if(this.isAndroid()){
+      BackHandler.addEventListener('hardwareBackPress', this.onBackPress.bind(this));
+    }
   }
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress.bind(this));
+    if(this.isAndroid()) {
+      BackHandler.removeEventListener('hardwareBackPress', this.onBackPress.bind(this));
+    }
   }
   onBackPress() {
     const {dispatch, navState} = this.props;
-    dispatch(back())
+    let index = 0;
+    let route;
+
+    alert(JSON.stringify(navState.routes[navState.index].index));
+    dispatch(back());
     return true;
   }
 
@@ -62,12 +91,11 @@ RootStackNavigatorWithNavigationState.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  navState: getRootNavState(state),
+  navState: getNavState(state),
 });
 
-// const mapDispatchToProps = (dispatch) => ({
-//   back: dispatch(back()),
-//   dispatch,
-// });
+const mapDispatchToProps = (dispatch) => ({
+
+});
 
 export default connect(mapStateToProps)(RootStackNavigatorWithNavigationState);

@@ -11,13 +11,13 @@ export default class SignUp extends Component {
 
 
   render() {
-    const gotoLogin = () => this.props.navigation.navigate('Login');
+    const gotoSignIn = () => this.props.navigation.navigate('SignIn');
     const gotoHome = () => this.props.navigation.navigate('Home');
 
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView>
         <KeyboardAvoidingView keyboardShouldPersistTaps='handled'>
-          <SignUpForm onSubmit={onSubmit} gotoLogin={gotoLogin} gotoHome={gotoHome}/>
+          <SignUpForm onSubmit={onSubmit} gotoSignIn={gotoSignIn} gotoHome={gotoHome}/>
         </KeyboardAvoidingView>
       </ScrollView>
     );

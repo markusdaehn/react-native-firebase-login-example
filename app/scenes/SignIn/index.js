@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { KeyboardAvoidingView, ScrollView, Image } from 'react-native';
+import { KeyboardAvoidingView, ScrollView, Image, Text } from 'react-native';
 import SignInForm from './SignInForm';
 import styles from './styles';
 
@@ -11,10 +11,10 @@ export default class SignIn extends Component {
     const gotoSignUp = () => this.props.navigation.navigate('SignUp')
     return (
       <ScrollView>
-        <KeyboardAvoidingView style={styles.container}>
-          <Image source={background} style={styles.shadow}>
-            <SignInForm signIn={signIn} gotoSignUp={gotoSignUp}/>
-          </Image>
+        <KeyboardAvoidingView>
+           <Image source={background} style={styles.shadow}>
+             <SignInForm signIn={signIn} gotoSignUp={gotoSignUp}/>
+           </Image>
         </KeyboardAvoidingView>
       </ScrollView>
     );

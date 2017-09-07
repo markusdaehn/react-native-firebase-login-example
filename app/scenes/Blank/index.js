@@ -22,7 +22,7 @@ BlankScreen.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  name: ownProps.navigation.state.params.name,
+  name: ownProps.navigation.state.params ? ownProps.navigation.state.params.name: undefined,
 });
 
 export default connect(mapStateToProps)(BlankScreen);
