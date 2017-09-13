@@ -1,18 +1,21 @@
-export default {
-  drawerCover: {
-    height: 120,
-    alignSelf: 'stretch',
-    justifyContent: 'center',
-    alignItems: 'center'
+import {StyleSheet} from 'react-native';
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 15
   },
-  logo: {
-    height: 80,
-    width: 70
+  sectionHeader: {
+    paddingTop: 5,
+    paddingRight: 10,
+    paddingBottom: 5,
+    paddingLeft: 10,
+    fontSize: 14,
+    fontWeight: 'bold',
+    backgroundColor: 'rgba(247,247,247,1.0)',
   },
-  logoContainer: {
-    height: 120,
-    alignSelf: 'stretch',
-    justifyContent: 'center',
-    alignItems: 'center'
+  menuItem: {
+    padding: 10,
+    height: 44,
   }
-};
+});

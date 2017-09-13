@@ -10,20 +10,20 @@ const routeConfig = {
   Home: {
     screen: Home,
     navigationOptions: {
-      drawerLabel: 'Home 2',
+      drawerLabel: 'Home',
     },
   },
   Blank: {
     screen: Blank,
     navigationOptions: {
-      drawerLabel: 'Blank 2',
+      drawerLabel: 'Blank',
     },
   },
 };
 
 const drawerNavigatorConfig = {
   drawerPosition: 'left',
-  contentComponent: (props) => <Menu sections={createSections()} />,
+  contentComponent: (props) => <Menu sections={createMenuSections()} />,
 };
 
 
@@ -31,9 +31,12 @@ const MainDrawerNavigator = DrawerNavigator(routeConfig, drawerNavigatorConfig);
 
 export default MainDrawerNavigator;
 
-const createSections = () => {
+/**
+ * Helper Functions
+ */
+const createMenuSections = () => {
   const accountSectionItems = [{key: 'SignIn', routeName: 'SignIn', label: 'Sign In'}];
-  const mainSectionItems = Object.keys(routeConfig).map((key) => createItem(key));
+  const mainSectionItems = Object.keys(routeConfig).map((key) => createMenuItem(key));
 
   return [
     {data: mainSectionItems, title:''},
@@ -41,7 +44,7 @@ const createSections = () => {
   ];
 }
 
-function createItem(key) {
+function createMenuItem(key) {
   return {
     key,
     routeName: key,

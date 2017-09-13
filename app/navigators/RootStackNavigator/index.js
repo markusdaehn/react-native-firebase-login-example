@@ -1,7 +1,6 @@
 import React, {Component}  from 'react';
 import {BackHandler, Platform} from 'react-native';
 import MainDrawerNavigator from '../MainDrawerNavigator';
-import header from '../MainDrawerNavigator/components/Header';
 import { back, navigate } from '../actions';
 import SignIn from '../../scenes/SignIn';
 import SignUp from '../../scenes/SignUp';
@@ -17,7 +16,7 @@ export const RootStackNavigator = StackNavigator({
     screen: MainDrawerNavigator,
     navigationOptions: ({navigation}) => {
       return {
-        title: 'Good Title',
+        title: 'Yuzsa',
         headerStyle: {
           backgroundColor:'#3498db',
         },
