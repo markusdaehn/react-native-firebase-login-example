@@ -26,6 +26,7 @@ export const RootStackNavigator = StackNavigator({
         },
         headerTintColor: 'white',
         headerLeft: <Icon name='menu' color='white' onPress={() => {
+          //navigation.dispatch({routeName:'DrawerToggle'});
           if(navigation.state.index === 0) {
             navigation.dispatch(navigate({routeName:'DrawerOpen'}));
           } else {
@@ -74,7 +75,6 @@ class RootStackNavigatorWithNavigationState extends Component {
     let index = 0;
     let route;
 
-    alert(JSON.stringify(navState.routes[navState.index].index));
     dispatch(back());
     return true;
   }
@@ -92,10 +92,6 @@ RootStackNavigatorWithNavigationState.propTypes = {
 
 const mapStateToProps = (state) => ({
   navState: getNavState(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-
 });
 
 export default connect(mapStateToProps)(RootStackNavigatorWithNavigationState);

@@ -17,7 +17,6 @@ export class SignUpForm extends Component {
 
   render() {
     const { handleSubmit, error, pristine, submitting, onSubmit, gotoSignIn } = this.props;
-    alert('error=' + JSON.stringify(error))
     return (
       <View behavior='padding'>
         <TextField

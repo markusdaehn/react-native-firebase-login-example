@@ -12,7 +12,7 @@ class Home extends Component {
     const {logout, navigate} = this.props;
     return (
       <ScrollView style={styles.container}>
-        <List style={styles.mt}>
+        <List>
           {
             this.props.list.map((name, i) => (
               <ListItem key={i} title={name} onPress={() => navigate({routeName:'Blank', params:{name}})} />
