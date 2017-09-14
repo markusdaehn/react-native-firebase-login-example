@@ -1,19 +1,23 @@
 
 import { AsyncStorage } from 'react-native';
-import devTools from 'remote-redux-devtools';
-import { createStore, applyMiddleware, compose } from 'redux';
+import {composeWithDevTools} from 'remote-redux-devtools';
+import { createStore, applyMiddleware } from 'redux';
 import { persistStore, autoRehydrate } from 'redux-persist';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';
-import reducer from '../state/reducers';
+import reducer from './reducer';
+import saga from './saga'
+import createSagaMiddleware from 'redux-saga';
 
 export default function configureStore(onCompletion:()=>void):any {
-  const enhancer = compose(
-    applyMiddleware(thunk, promise),
-    devTools({
-      name: 'yuzsa', realtime: true,
-    }),
-  );
+  const sagaMiddleware = createSagaMiddleware();
+  const compose = composeWithDevTools({name: 'yuzsa', realtime: true});
+  const middleware = [
+    thunk,
+    promise,
+    sagaMiddleware,
+  ];
+  const enhancer = compose(applyMiddleware(...middleware));
   const store = autoRehydrate()(createStore)(reducer, enhancer);
 
   persistStore(store, {
@@ -21,6 +25,8 @@ export default function configureStore(onCompletion:()=>void):any {
     storage: AsyncStorage,
     debounce: 50
   }, onCompletion);
+
+  sagaMiddleware.run(saga);
 
   return store;
 }

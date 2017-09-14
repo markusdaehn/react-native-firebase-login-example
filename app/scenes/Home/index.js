@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 const mapStateToProps = state => ({
-  list: state.screens.home.list
+  list: state.scenes.home.list
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

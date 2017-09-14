@@ -1,4 +1,4 @@
-import type { Action } from '../actions/types';
+import type { Action } from '../../actions/types';
 
 export type State = {
   list: string
