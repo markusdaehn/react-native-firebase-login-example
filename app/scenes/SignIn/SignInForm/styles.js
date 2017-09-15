@@ -6,9 +6,13 @@ const { StyleSheet, Dimensions } = React;
 const deviceHeight = Dimensions.get('window').height;
 
 export default StyleSheet.create({
-  shadow: {
+  bg: {
     flex: 1,
-    width: null,
-    height: null,
+    marginTop: deviceHeight / 1.75,
+    paddingTop: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 30,
+    bottom: 0,
   },
 });

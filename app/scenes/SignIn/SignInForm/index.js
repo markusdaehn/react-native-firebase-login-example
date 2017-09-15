@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Text, View } from 'react-native';
-import { EmailField, PasswordField, reduxForm } from '../../components/redux-form'
+import { EmailField, PasswordField, reduxForm } from '../../../components/redux-form'
 import styles from './styles';
 import validate from './validate';
+import {connect} from 'react-redux';
+import {navigate} from '../../../navigators/actions';
 
+//@NOTE: This is a class because we have a ref property
 export class SignInForm extends Component {
   constructor(props) {
     super(props);
@@ -42,11 +45,18 @@ export class SignInForm extends Component {
 }
 
 SignInForm.propTypes = {
-  signIn: PropTypes.func,
-  gotoSignUp: PropTypes.func
+  signIn: PropTypes.func.isRequired,
+  gotoSignUp: PropTypes.func.isRequired,
 };
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  signIn: () => dispatch(navigate({routeName:'Home'})),
+  gotoSignUp: () => dispatch(navigate({routeName:'SignUp'})),
+});
+
+const WrappedSignInForm = connect(null, mapDispatchToProps)(SignInForm);
 
 export default reduxForm({
     form: 'login',
     validate
-  })(SignInForm);
+  })(WrappedSignInForm);

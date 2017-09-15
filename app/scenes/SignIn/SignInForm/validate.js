@@ -1,4 +1,4 @@
-import {default as createValidate, fields} from '../../lib/validate';
+import {default as createValidate, fields} from '../../../lib/validate';
 
 const {email, password} = fields;
 const validate = createValidate([email, password]);

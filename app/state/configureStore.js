@@ -11,12 +11,12 @@ import createSagaMiddleware from 'redux-saga';
 
 export default function configureStore(onCompletion:()=>void):any {
   const sagaMiddleware = createSagaMiddleware();
-  const compose = composeWithDevTools({name: 'yuzsa', realtime: true});
   const middleware = [
     thunk,
     promise,
     sagaMiddleware,
   ];
+  const compose = composeWithDevTools({name: 'yuzsa', realtime: true});
   const enhancer = compose(applyMiddleware(...middleware));
   const store = autoRehydrate()(createStore)(reducer, enhancer);
 
