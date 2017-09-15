@@ -1,4 +1,4 @@
-import signIn from '../scenes/SignIn/saga';
+import signIn from '../screens/SignIn/saga';
 import {all} from 'redux-saga/effects';
 
 const rootSaga = function* rootSaga(){

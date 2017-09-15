@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
-import scenes from '../scenes/reducer';
+import { reducer as form} from 'redux-form';
+import screens from '../screens/reducer';
 import navigators from '../navigators/reducer';
+import user from './user/reducer';
 
 export default combineReducers({
-  form: formReducer,
-  scenes,
+  form,
+  screens,
   navigators,
+  user,
 });

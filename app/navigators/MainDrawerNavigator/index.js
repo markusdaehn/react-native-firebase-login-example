@@ -1,9 +1,9 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
 import { DrawerNavigator, DrawerItems } from 'react-navigation';
-import Home from '../../scenes/Home';
-import Blank from '../../scenes/Blank';
-import SignIn from '../../scenes/SignIn';
+import Home from '../../screens/Home';
+import Blank from '../../screens/Blank';
+import SignIn from '../../screens/SignIn';
 import Menu from './components/Menu';
 
 const routeConfig = {

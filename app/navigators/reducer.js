@@ -1,6 +1,6 @@
 import {RootStackNavigator} from './RootStackNavigator';
 
-export default function(state, action) {
+export default function root(state, action) {
   const newState = RootStackNavigator.router.getStateForAction(action, state);
 
   return newState || state;
