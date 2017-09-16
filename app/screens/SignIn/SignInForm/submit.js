@@ -9,7 +9,6 @@ const AUTH_WRONG_PASSWORD = 'Password is wrong';
 
 export default function submit(values, dispatch, props) {
   const { email, password } = values;
-
   return auth.signInWithEmailAndPassword(email, password)
     .then((user) => {
       props.gotoHome();

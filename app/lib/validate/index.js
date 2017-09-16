@@ -2,18 +2,19 @@ import * as rules from './rules';
 import * as fields from './fieldRules';
 
 const validate = (fieldRules) => values => {
-  const error = {
-    _errors: []
-  };
+  const error = {};
 
   fieldRules
     .forEach(function ({fieldType, rules}) {
-         error[fieldType] = rules.map((rule) => rule(values[fieldType]))
+        const fieldErrors = rules.map((rule) => rule(values[fieldType]))
                                  .filter((e) => typeof e === 'string');
-         error._errors.push(error[fieldType]);
+        if(fieldErrors.length > 0) {
+           error[fieldType] = fieldErrors[0];
+           error._errors = (error._errors || []).concat(fieldErrors);
+        }
      });
 
-   return error;
+   return Object.freeze(error);
 }
 
 export {rules, fields};
