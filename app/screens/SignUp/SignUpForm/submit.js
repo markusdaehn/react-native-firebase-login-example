@@ -4,7 +4,7 @@ import { SubmissionError } from '../../../components/redux-form';
 export default function submit(values, dispatch, props) {
   const { email, password } = values;
   const _error =  'Failed to create account';
-
+  alert(`values=${values}`)
   return auth.createUserWithEmailAndPassword(email, password)
     .then((user) => {
       props.gotoHome();

@@ -55,7 +55,7 @@ export class SignUpForm extends Component {
         <Button
           title='Got an Account?'
           style={styles.btn}
-          onPress={()=>{}}
+          onPress={gotoSignIn}
           disabled={submitting}
           accessibilityLabel='Press to go to sign in screen'
         />
@@ -66,12 +66,12 @@ export class SignUpForm extends Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   gotoSignIn: () => dispatch(navigate({routeName:'SignIn'})),
-  //submit,
+  submit,
 });
 
-//const connectedSignUpForm = connect(null, mapDispatchToProps)(SignUpForm);
+const connectedSignUpForm = connect(null, mapDispatchToProps)(SignUpForm);
 
 export default reduxForm({
   form: 'signup',
   validate
-})(SignUpForm)
+})(connectedSignUpForm)
