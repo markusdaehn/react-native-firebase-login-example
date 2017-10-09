@@ -1,1 +1,1 @@
-require('react-native-mock/mock');
+//require('react-native-mock/mock');
