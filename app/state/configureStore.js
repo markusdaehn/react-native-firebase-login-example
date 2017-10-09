@@ -1,7 +1,8 @@
 
 import { AsyncStorage } from 'react-native';
-import {composeWithDevTools} from 'remote-redux-devtools';
-import { createStore, applyMiddleware } from 'redux';
+// @note: commented out because react 16 removed React.PropTypes
+//import {composeWithDevTools} from 'remote-redux-devtools';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { persistStore, autoRehydrate } from 'redux-persist';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';
@@ -16,7 +17,8 @@ export default function configureStore(onCompletion:()=>void):any {
     promise,
     sagaMiddleware,
   ];
-  const compose = composeWithDevTools({name: 'yuzsa', realtime: true});
+  // @note: commented out because react 16 removed React.PropTypes
+  //const compose = composeWithDevTools({name: 'yuzsa', realtime: true});
   const enhancer = compose(applyMiddleware(...middleware));
   const store = autoRehydrate()(createStore)(reducer, enhancer);
 

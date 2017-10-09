@@ -9,7 +9,7 @@
     },
     {
         "merged": "/home/markus/sdf/yuzsa/android/app/build/intermediates/res/merged/debug/anim/fade_in.xml",
-        "source": "/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.47.1/res/anim/fade_in.xml"
+        "source": "/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.49.2/res/anim/fade_in.xml"
     },
     {
         "merged": "/home/markus/sdf/yuzsa/android/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
@@ -17,7 +17,7 @@
     },
     {
         "merged": "/home/markus/sdf/yuzsa/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_in.xml",
-        "source": "/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.47.1/res/anim/catalyst_push_up_in.xml"
+        "source": "/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.49.2/res/anim/catalyst_push_up_in.xml"
     },
     {
         "merged": "/home/markus/sdf/yuzsa/android/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
@@ -29,11 +29,11 @@
     },
     {
         "merged": "/home/markus/sdf/yuzsa/android/app/build/intermediates/res/merged/debug/anim/slide_up.xml",
-        "source": "/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.47.1/res/anim/slide_up.xml"
+        "source": "/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.49.2/res/anim/slide_up.xml"
     },
     {
         "merged": "/home/markus/sdf/yuzsa/android/app/build/intermediates/res/merged/debug/anim/slide_down.xml",
-        "source": "/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.47.1/res/anim/slide_down.xml"
+        "source": "/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.49.2/res/anim/slide_down.xml"
     },
     {
         "merged": "/home/markus/sdf/yuzsa/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
@@ -41,11 +41,11 @@
     },
     {
         "merged": "/home/markus/sdf/yuzsa/android/app/build/intermediates/res/merged/debug/anim/fade_out.xml",
-        "source": "/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.47.1/res/anim/fade_out.xml"
+        "source": "/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.49.2/res/anim/fade_out.xml"
     },
     {
         "merged": "/home/markus/sdf/yuzsa/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_out.xml",
-        "source": "/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.47.1/res/anim/catalyst_push_up_out.xml"
+        "source": "/home/markus/sdf/yuzsa/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.49.2/res/anim/catalyst_push_up_out.xml"
     },
     {
         "merged": "/home/markus/sdf/yuzsa/android/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
