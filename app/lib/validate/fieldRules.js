@@ -7,9 +7,9 @@ export const password = (() => {
   return Object.freeze({
    fieldType,
    rules: [
-             required(fieldType)(),
-             minLength(fieldType)(6),
-             maxLength(fieldType)(30)
+             required(fieldType),
+             minLength(6, fieldType),
+             maxLength(30, fieldType)
           ]
   });
 })();
@@ -20,8 +20,8 @@ export const email = (() => {
   return Object.freeze({
   fieldType,
   rules: [
-            required(fieldType)(),
-            isEmail(fieldType)()
+            required(fieldType),
+            isEmail(fieldType)
          ]
   });
 })()

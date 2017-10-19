@@ -89,7 +89,7 @@ describe('rules', function () {
       let errorMessage;
 
       beforeEach(function () {
-        errorMessage = email(fieldName)()('bad email');
+        errorMessage = email(fieldName)('bad email');
       });
 
       it('should return an error message with the field name set to the fieldName parameter', function() {
@@ -102,7 +102,7 @@ describe('rules', function () {
       let errorMessage;
 
       beforeEach(function () {
-        errorMessage = email()()('bad email');
+        errorMessage = email()('bad email');
       });
 
       it('should return an error message with the field name "email"', function () {
@@ -115,7 +115,7 @@ describe('rules', function () {
         let errorMessage;
 
         beforeEach(function () {
-          errorMessage = email()()(validEmail);
+          errorMessage = email()(validEmail);
         });
 
         it('should return undefined', function () {
@@ -129,7 +129,7 @@ describe('rules', function () {
         let errorMessage;
 
         beforeEach(function () {
-          errorMessage = email()()(invalidEmail);
+          errorMessage = email()(invalidEmail);
         });
 
         it('should return a string containing "is invalide"', function () {
@@ -145,7 +145,7 @@ describe('rules', function () {
       let errorMessage;
 
       beforeEach(function () {
-        errorMessage = required(fieldName)()();
+        errorMessage = required(fieldName)();
       });
 
       it('should return an error message with the field name set to the fieldName parameter', function () {
@@ -158,7 +158,7 @@ describe('rules', function () {
       let errorMessage;
 
       beforeEach(function () {
-        errorMessage = required()()();
+        errorMessage = required()();
       });
 
       it('should return an error message with the field name set to "field"', function () {
@@ -171,7 +171,7 @@ describe('rules', function () {
       let errorMessage;
 
       beforeEach(function () {
-        errorMessage = required()()(null);
+        errorMessage = required()(null);
       });
 
       it('should return an error message with the field name set to "field"', function () {
@@ -184,7 +184,7 @@ describe('rules', function () {
       let errorMessage;
 
       beforeEach(function () {
-        errorMessage = required()()();
+        errorMessage = required()();
       });
 
       it('should return an error message with the field name set to "field"', function () {
@@ -197,9 +197,8 @@ describe('rules', function () {
       let errorMessage;
 
       beforeEach(function () {
-        errorMessage = required()()(' ');
+        errorMessage = required()(' ');
       });
-      console.log(' gggg/n/t'.trim())
       it('should return an error message with the field name set to "field"', function () {
         expect(errorMessage).toEqual(expectedErrorMessage);
       });
@@ -217,7 +216,7 @@ describe('rules', function () {
     lengthModifierScenarios.forEach(function (subject) {
       describe(`when the length modifier is ${subject.description}`, function () {
         it(`should throw an exception with error messasge "${subject.expect.message}"`, function () {
-          expect(function () { minLength()(subject.value)() }).toThrow(subject.expect);
+          expect(function () { minLength(subject.value)() }).toThrow(subject.expect);
         });
       });
     });
@@ -227,7 +226,7 @@ describe('rules', function () {
       let errorMessage;
 
       beforeEach(function () {
-        errorMessage = minLength(fieldName)(length5)(lengthLT5);
+        errorMessage = minLength(length5, fieldName)(lengthLT5);
       });
 
       it('should return an error message with the field name set to the fieldName parameter', function () {
@@ -240,7 +239,7 @@ describe('rules', function () {
       let errorMessage;
 
       beforeEach(function () {
-        errorMessage = minLength()(length5)(lengthLT5);
+        errorMessage = minLength(length5)(lengthLT5);
       });
 
       it('should return an error message with the field name set to "field"', function () {
@@ -266,7 +265,7 @@ describe('rules', function () {
     lengthModifierScenarios.forEach(function (subject) {
       describe(`when the length modifier is ${subject.description}`, function () {
         it(`should throw an exception with error messasge "${subject.expect.message}"`, function () {
-          expect(function () { maxLength()(subject.value)() }).toThrow(subject.expect);
+          expect(function () { maxLength(subject.value)() }).toThrow(subject.expect);
         });
       });
     });
@@ -276,7 +275,7 @@ describe('rules', function () {
       let errorMessage;
 
       beforeEach(function () {
-        errorMessage = maxLength(fieldName)(length5)(lengthGT5);
+        errorMessage = maxLength(length5, fieldName)(lengthGT5);
       });
 
       it('should return an error message with the field name set to the fieldName parameter', function () {
@@ -289,7 +288,7 @@ describe('rules', function () {
       let errorMessage;
 
       beforeEach(function () {
-        errorMessage = maxLength()(length5)(lengthGT5);
+        errorMessage = maxLength(length5)(lengthGT5);
       });
 
       it('should return an error message with the field name set to "field"', function () {
@@ -315,7 +314,7 @@ describe('rules', function () {
       let errorMessage;
 
       beforeEach(function () {
-        errorMessage = alphaNumeric(fieldName)()('9$');
+        errorMessage = alphaNumeric(fieldName)('9$');
       });
 
       it('should return an error message with the field name set to the fieldName parameter', function () {
@@ -327,7 +326,7 @@ describe('rules', function () {
       let errorMessage;
 
       beforeEach(function () {
-        errorMessage = alphaNumeric()()('9$');
+        errorMessage = alphaNumeric()('9$');
       });
 
       it('should return an error message with the field name set to "field"', function () {
@@ -336,7 +335,7 @@ describe('rules', function () {
     });
     describe('when it is not an alphaNumeric value', function () {
       beforeEach(function () {
-        errorMessage = alphaNumeric()()('ab@df09)()');
+        errorMessage = alphaNumeric()('ab@df09)()');
       });
 
       it('should return "The field can only be alpahnumeric characters"', function () {
@@ -345,7 +344,7 @@ describe('rules', function () {
     });
     describe('when it is an alphaNumeric value', function () {
       beforeEach(function () {
-        errorMessage = alphaNumeric()()('abc9');
+        errorMessage = alphaNumeric()('abc9');
       });
 
       it('it should return undefined', function () {
@@ -353,6 +352,53 @@ describe('rules', function () {
       });
     });
   }); // End alphaNumeric
+  describe('phoneNumber', function () {
+    const defaultErrorMessage = 'Invalid phone number, must be 10 digits';
+    let errorMessage;
+
+    describe('when the fieldName parameter is passed in and validation fails', function() {
+      const expectedErrorMessage = `Invalid ${fieldName}, must be 10 digits`;
+      let errorMessage;
+
+      beforeEach(function () {
+        errorMessage = phoneNumber(fieldName)('9$');
+      });
+
+      it('should return an error message with the field name set to the fieldName parameter', function () {
+        expect(errorMessage).toEqual(expectedErrorMessage);
+      });
+    });
+
+    describe('when the fieldName parameter is NOT passed in and validation fails', function () {
+      let errorMessage;
+
+      beforeEach(function () {
+        errorMessage = phoneNumber()('9$');
+      });
+
+      it('should return an error message with the field name set to "field"', function () {
+        expect(errorMessage).toEqual(defaultErrorMessage);
+      });
+    });
+    describe('when it is not an phoneNumber value', function () {
+      beforeEach(function () {
+        errorMessage = phoneNumber()('ab@df09)()');
+      });
+
+      it('should return "The field can only be alpahnumeric characters"', function () {
+        expect(errorMessage).toEqual(defaultErrorMessage);
+      });
+    });
+    describe('when it is an phoneNumber value', function () {
+      beforeEach(function () {
+        errorMessage = phoneNumber()('8586599674');
+      });
+
+      it('it should return undefined', function () {
+        expect(errorMessage).toBeUndefined();
+      });
+    });
+  }); // End phoneNumber
 });
 
 function test(scenarios, rule, modifier, defaultErrorMessage) {
@@ -361,7 +407,7 @@ function test(scenarios, rule, modifier, defaultErrorMessage) {
       let errorMessage;
 
       beforeEach(function () {
-        errorMessage = rule()(modifier)(scenario.value);
+        errorMessage = rule(modifier)(scenario.value);
       });
 
       it(`should return "${scenario.expect}"`, function () {
