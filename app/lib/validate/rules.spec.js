@@ -110,6 +110,42 @@ describe('rules', function () {
       });
     });
 
+    describe('when passed an string with white space', function () {
+      let errorMessage;
+
+      beforeEach(function () {
+        errorMessage = email()(' ');
+      });
+
+      it(`should return an undefined error message`, function () {
+        expect(errorMessage).toBeUndefined();
+      });
+    });
+
+    describe('when passed an undefined value', function () {
+      let errorMessage;
+
+      beforeEach(function () {
+        errorMessage = email()();
+      });
+
+      it(`should return an undefined error message `, function () {
+        expect(errorMessage).toBeUndefined();
+      });
+    });
+
+    describe('when passed a null value', function () {
+      let errorMessage;
+
+      beforeEach(function () {
+        errorMessage = email()(null);
+      });
+
+      it(`should return an undefined error message `, function () {
+        expect(errorMessage).toBeUndefined();
+      });
+    });
+
     VALID_EMAILS.forEach(function (validEmail) {
       describe(`when passed a valid email ${validEmail}`, function () {
         let errorMessage;
@@ -122,7 +158,7 @@ describe('rules', function () {
           expect(errorMessage).toBeUndefined();
         });
       });
-    });
+    }); // #END VALID_EMAILS
 
     INVALID_EMAILS.forEach(function (invalidEmail) {
       describe(`when passed an invalid email ${invalidEmail}`, function () {
@@ -132,11 +168,11 @@ describe('rules', function () {
           errorMessage = email()(invalidEmail);
         });
 
-        it('should return a string containing "is invalide"', function () {
+        it('should return a string containing "is invalid"', function () {
           expect(errorMessage).toEqual(expect.stringMatching('is invalid'));
         });
       });
-    });
+    }); // #END INVALID_EMAILS
   });
 
   describe('required', function () {
@@ -216,7 +252,7 @@ describe('rules', function () {
     lengthModifierScenarios.forEach(function (subject) {
       describe(`when the length modifier is ${subject.description}`, function () {
         it(`should throw an exception with error messasge "${subject.expect.message}"`, function () {
-          expect(function () { minLength(subject.value)() }).toThrow(subject.expect);
+          expect(function () { minLength(subject.value) }).toThrow(subject.expect);
         });
       });
     });
@@ -247,14 +283,16 @@ describe('rules', function () {
       });
     });
     const minLengthScenarios = [
-      {description: 'null', value: null, expect: undefined},
-      {description: 'undefined', value: undefined, expect: undefined},
-      {description: 'a value with length = min length', value: lengthET5, expect: undefined},
-      {description: 'a value with length > min length', value: lengthGT5, expect: undefined},
-      {description: 'a value with length < min length', value: lengthLT5, expect: defaultErrorMessage},
+      { description: 'null', value: null, expect: undefined },
+      { description: 'undefined', value: undefined, expect: undefined },
+      { description: 'a string with whitespace only', value: '  ', expect: undefined },
+      { description: 'a value with length = min length', value: lengthET5, expect: undefined },
+      { description: 'a value with length > min length', value: lengthGT5, expect: undefined },
+      { description: 'a value with length < min length', value: lengthLT5, expect: defaultErrorMessage },
     ];
     test(minLengthScenarios, minLength, length5, defaultErrorMessage);
   }); // End minLength tests
+
   describe('maxLength', function () {
     const length5 = 5;
     const lengthLT5 = Object.freeze([1,2,3,4]);
@@ -265,7 +303,7 @@ describe('rules', function () {
     lengthModifierScenarios.forEach(function (subject) {
       describe(`when the length modifier is ${subject.description}`, function () {
         it(`should throw an exception with error messasge "${subject.expect.message}"`, function () {
-          expect(function () { maxLength(subject.value)() }).toThrow(subject.expect);
+          expect(function () { maxLength(subject.value) }).toThrow(subject.expect);
         });
       });
     });
@@ -298,6 +336,7 @@ describe('rules', function () {
     const maxLengthScenarios = [
       { description: 'null', value: null, expect: undefined },
       { description: 'undefined', value: undefined, expect: undefined },
+      { description: 'a string with whitespace only', value: '  ', expect: undefined },
       { description: 'a value with length = max length', value: lengthET5, expect: undefined },
       { description: 'a value with length < max length', value: lengthLT5, expect: undefined },
       { description: 'a value with length > max length', value: lengthGT5, expect: defaultErrorMessage },
@@ -333,7 +372,34 @@ describe('rules', function () {
         expect(errorMessage).toEqual(defaultErrorMessage);
       });
     });
-    describe('when it is not an alphaNumeric value', function () {
+    describe('when the value is undefined', function () {
+      beforeEach(function () {
+        errorMessage = alphaNumeric()();
+      });
+
+      it('should return an undefined messaage', function () {
+        expect(errorMessage).toBeUndefined();
+      });
+    });
+    describe('when the value is null', function () {
+      beforeEach(function () {
+        errorMessage = alphaNumeric()();
+      });
+
+      it('should return an undefined message', function () {
+        expect(errorMessage).toBeUndefined();
+      });
+    });
+    describe('when the value is a string with whitespace', function () {
+      beforeEach(function () {
+        errorMessage = alphaNumeric()();
+      });
+
+      it('should return an undefined message', function () {
+        expect(errorMessage).toBeUndefined();
+      });
+    });
+    describe('when the value is not an alphaNumeric value', function () {
       beforeEach(function () {
         errorMessage = alphaNumeric()('ab@df09)()');
       });
@@ -342,7 +408,7 @@ describe('rules', function () {
         expect(errorMessage).toEqual(defaultErrorMessage);
       });
     });
-    describe('when it is an alphaNumeric value', function () {
+    describe('when the value is an alphaNumeric value', function () {
       beforeEach(function () {
         errorMessage = alphaNumeric()('abc9');
       });
@@ -352,6 +418,7 @@ describe('rules', function () {
       });
     });
   }); // End alphaNumeric
+
   describe('phoneNumber', function () {
     const defaultErrorMessage = 'Invalid phone number, must be 10 digits';
     let errorMessage;
@@ -380,7 +447,34 @@ describe('rules', function () {
         expect(errorMessage).toEqual(defaultErrorMessage);
       });
     });
-    describe('when it is not an phoneNumber value', function () {
+    describe('when the value is undefined', function () {
+      beforeEach(function () {
+        errorMessage = phoneNumber()();
+      });
+
+      it('should return an undefined messaage', function () {
+        expect(errorMessage).toBeUndefined();
+      });
+    });
+    describe('when the value is null', function () {
+      beforeEach(function () {
+        errorMessage = phoneNumber()();
+      });
+
+      it('should return an undefined message', function () {
+        expect(errorMessage).toBeUndefined();
+      });
+    });
+    describe('when the value is a string with whitespace', function () {
+      beforeEach(function () {
+        errorMessage = phoneNumber()();
+      });
+
+      it('should return an undefined message', function () {
+        expect(errorMessage).toBeUndefined();
+      });
+    });
+    describe('when the value is not an phoneNumber value', function () {
       beforeEach(function () {
         errorMessage = phoneNumber()('ab@df09)()');
       });
@@ -389,7 +483,7 @@ describe('rules', function () {
         expect(errorMessage).toEqual(defaultErrorMessage);
       });
     });
-    describe('when it is an phoneNumber value', function () {
+    describe('when the value is an phoneNumber value', function () {
       beforeEach(function () {
         errorMessage = phoneNumber()('8586599674');
       });

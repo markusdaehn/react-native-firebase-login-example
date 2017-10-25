@@ -1,5 +1,5 @@
-import createValidate, {fields} from '../../../lib/validate';
+import validateFieldValues, { fieldRules } from '../../../lib/validate';
 
-const {email, password} = fields;
-const validate = createValidate([email, password]);
+const { email, password } = fieldRules;
+const validate = validateFieldValues([email, password]);
 export default validate;

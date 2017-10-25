@@ -2,26 +2,26 @@ import { email as isEmail, required, minLength, maxLength } from './rules';
 
 // Field Rules
 export const password = (() => {
-  const fieldType = 'password';
+  const fieldName = 'password';
 
   return Object.freeze({
-   fieldType,
+   fieldName,
    rules: [
-             required(fieldType),
-             minLength(6, fieldType),
-             maxLength(30, fieldType)
+             required(fieldName),
+             minLength(6, fieldName),
+             maxLength(30, fieldName)
           ]
   });
 })();
 
 export const email = (() => {
-  const fieldType = 'email';
+  const fieldName = 'email';
 
   return Object.freeze({
-  fieldType,
+  fieldName,
   rules: [
-            required(fieldType),
-            isEmail(fieldType)
+            required(fieldName),
+            isEmail(fieldName)
          ]
   });
 })()
