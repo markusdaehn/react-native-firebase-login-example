@@ -1,12 +1,12 @@
 import {
   rules as rulesCollection,
-  validateValue,
   fieldRules,
-  reduceFieldValidationResults,
-  isValidationResultWithErrors,
+  validateValue,
   validateFieldInValues,
+  isValidationResultWithErrors,
+  reduceFieldValidationResults,
+  validateFieldValues,
  } from './validate';
-
 
 describe('validate', function () {
   const { required, email, minLength, alphaNumeric } = rulesCollection;
@@ -45,6 +45,24 @@ describe('validate', function () {
       });
     });
   }); // #End validateValue(rules, value)
+  describe('isValidationResultWithErrors({ fieldName, errors } = {})', function () {
+    [
+      { description: 'an undefined validation result', expected: false },
+      { description: 'valid with errors', value: { fieldName: 'email', errors: ['an error'] }, expected: true },
+      { description: 'valid with no errors', value: { fieldName: 'email', errors: []}, expected: false },
+      { description: 'an object with only the fieldName defined', value: { fieldName: 'email' }, expected: false },
+    ].forEach(function (scenario) {
+      describe(`when passed a validation result that is ${scenario.description}`, function () {
+        let result;
+        beforeEach(function () {
+          result = isValidationResultWithErrors(scenario.value);
+        });
+        it(`should return ${scenario.expected}`, function () {
+          expect(result).toBe(scenario.expected);
+        });
+      });
+    });
+  }); // #END isValidationResultWithErrors
   describe('reduceFieldValidationResults(validationResults)', function () {
     let errorResult;
     describe('when passed an array of validation results', function () {
@@ -97,25 +115,7 @@ describe('validate', function () {
       });
     });
   }); // #end reduceFieldValidationResults
-  describe('isValidationResultWithErrors({ fieldName, errors } = {})', function () {
-    [
-      { description: 'an undefined validation result', expected: false },
-      { description: 'valid with errors', value: { fieldName: 'email', errors: ['an error'] }, expected: true },
-      { description: 'valid with no errors', value: { fieldName: 'email', errors: []}, expected: false },
-      { description: 'an object with only the fieldName defined', value: { fieldName: 'email' }, expected: false },
-    ].forEach(function (scenario) {
-      describe(`when passed a validation result that is ${scenario.description}`, function () {
-        let result;
-        beforeEach(function () {
-          result = isValidationResultWithErrors(scenario.value);
-        });
-        it(`should return ${scenario.expected}`, function () {
-          expect(result).toBe(scenario.expected);
-        });
-      });
-    });
-  }); // #END isValidationResultWithErrors
-  describe('validateFieldValues({values, {fieldName, rules}})', function () {
+  describe('validateFieldInValues(validateValue, values, {fieldName, rules})', function () {
     let result;
     describe('when given a fieldName, rules, and values with fieldName property', function () {
       const fieldName = 'email';
@@ -143,10 +143,21 @@ describe('validate', function () {
       email: 'a_bad_email',
       password: 'short',
     };
-    const fieldRulesCollection = [fieldRules.email, fieldRules.password];
-
-    it('should return an error object with an email error', function () {
-
+    const emailError = 'The email is invalid';
+    const passwordError = 'The password length must be greater than or equal to 6';
+    const validate = validateFieldValues([fieldRules.email, fieldRules.password]);
+    let validationResult;
+    beforeEach(function () {
+      validationResult = validate(values);
     });
-  });
+    it('should return a validation result with an email property with the expected error', function () {
+      expect(validationResult.email).toEqual(emailError);
+    });
+    it('should return a validation result with an password proerty with the expected error', function () {
+      expect(validationResult.password).toEqual(passwordError);
+    });
+    it('should return a validation result with an _errors property array containing an email and password errors', function () {
+      expect(validationResult._errors).toEqual(expect.arrayContaining([emailError, passwordError]))
+    });
+  }); // #END validateFieldValues
 });
