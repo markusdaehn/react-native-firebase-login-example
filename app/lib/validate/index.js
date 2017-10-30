@@ -1,4 +1,4 @@
-import validateFieldValues, { rules, fieldRules, validate } from './validate';
+import validateFieldValues, { rules, fieldRules, validateValue } from './validate';
 
-export { rules, fieldRules, validate, validateFieldValues };
+export { rules, fieldRules, validateValue, validateFieldValues };
 export default validateFieldValues;

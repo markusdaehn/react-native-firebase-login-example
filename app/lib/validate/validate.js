@@ -1,6 +1,6 @@
 import * as rules from './rules';
 import * as fieldRules from './fieldRules';
-import {curry, pipe, map} from 'rambda';
+import { curry, pipe, map } from 'rambda';
 
 const validateValue = (rules=[]) => value => rules.map((rule) => rule(value)).filter((e) => typeof e === 'string');
 
@@ -30,6 +30,9 @@ const reduceFieldValidationResults = (validationResults) => {
   }, {}));
 }
 
+/**
+ * This is the main validation method and the default method returned from this module.
+ */
 const validateFieldValues = curry((fieldRulesCollection, values) => {
   return pipe (
     map(validateFieldInValues(validateValue, values)),
