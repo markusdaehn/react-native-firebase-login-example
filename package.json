@@ -5,6 +5,10 @@
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-native": "^4.0.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "enzyme": "^2.7.1",
     "eslint": "^3.19.0",
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-flowtype": "^2.33.0",
@@ -12,7 +16,10 @@
     "eslint-plugin-react": "^7.2.1",
     "flow-bin": "^0.53.0",
     "jest": "21.3.0-beta.1",
+    "jest-serializer-enzyme": "^1.0.0",
     "prettier": "1.5.2",
+    "react-addons-test-utils": "^16.0.0-alpha.3",
+    "react-dom": "^16.0.0",
     "react-test-renderer": "16.0.0-alpha.12",
     "sinon": "^2.2.0"
   },
@@ -25,6 +32,9 @@
   },
   "jest": {
     "preset": "react-native",
+    "snapshotSerializers": [
+      "./node_modules/jest-serializer-enzyme"
+    ],
     "testMatch": [
       "**/?(*.)(spec|test).js?(x)"
     ],

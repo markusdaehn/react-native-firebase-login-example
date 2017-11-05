@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmailField when rendered with name and placeholder properties set should match snapshot with name and placeholder set to passed in props 1`] = `
+<Field
+  autoCapitalize="none"
+  autoCorrect={false}
+  component={[Function]}
+  keyboardType="email-address"
+  name="email-field-name"
+  placeholder="email-field-placeholder"
+  withRef={true}
+/>
+`;
+
+exports[`EmailField when rendered with no props should match snapshot with default props 1`] = `
+<Field
+  autoCapitalize="none"
+  autoCorrect={false}
+  component={[Function]}
+  keyboardType="email-address"
+  name="email"
+  placeholder="Your email address"
+  withRef={true}
+/>
+`;

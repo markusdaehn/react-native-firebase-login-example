@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input when rendered should render correctly 1`] = `
+<FormInput
+  a="a"
+  b="b"
+  normalizeFontSize={true}
+  onBlur={[Function]}
+  onChange={[Function]}
+  onFocus={[Function]}
+  value="The value"
+/>
+`;

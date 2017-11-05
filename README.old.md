@@ -1,2 +1,0 @@
-# yuzsa
-Rental Application
