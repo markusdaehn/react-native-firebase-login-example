@@ -31,7 +31,7 @@ describe('Input', function () {
         expect(input.onChange).toBeCalledWith(ev);
       });
     });
-    describe('and when navigating away from the input', function () {
+    describe('and when input is navigated away', function () {
       beforeEach(function () {
         inputWrapper.find('FormInput').simulate('blur', {target: {value: 'new value'}});
       });
@@ -39,7 +39,7 @@ describe('Input', function () {
         expect(input.onBlur).toBeCalled();
       });
     });
-    describe('and when navigating to the input', function () {
+    describe('and when input gains focus', function () {
       beforeEach(function () {
         inputWrapper.find('FormInput').simulate('focus', {target: {value: 'new value'}});
       });

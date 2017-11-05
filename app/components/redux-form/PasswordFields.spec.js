@@ -1,25 +1,25 @@
 import 'react-native';
 import React from 'react';
-import EmailField from './EmailField';
+import PasswordField from './PasswordField';
 import { shallow } from 'enzyme';
 
-describe('EmailField', function () {
-  let email;
+describe('PasswordField', function () {
+  let password;
   describe('when rendered with no props', function () {
     beforeEach(function () {
-      email = shallow(<EmailField />)
+      password = shallow(<PasswordField />)
     });
 
     it('should render correctly with default props', function () {
-      expect(email).toMatchSnapshot();
+      expect(password).toMatchSnapshot();
     });
   });
   describe('when rendered with name and placeholder properties set', function () {
     beforeEach(function () {
-      email = shallow(<EmailField name='email-field-name' placeholder='email-field-placeholder'  />)
+      password = shallow(<PasswordField name='password-field-name' placeholder='password-field-placeholder'  />)
     });
     it('should render correctly with name and placeholder set to passed in props', function () {
-      expect(email).toMatchSnapshot();
+      expect(password).toMatchSnapshot();
     });
   });
 });

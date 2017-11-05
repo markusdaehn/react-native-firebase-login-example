@@ -12,12 +12,13 @@ export default class EmailField extends Component {
   }
 
   render() {
+    let {name, placeholder} = this.props
     return (
       <Field
-        name='email'
         ref={(field) => this.field = field}
         withRef
-        placeholder='Your email address'
+        name={name || 'email'}
+        placeholder={placeholder || 'Your email address'}
         keyboardType="email-address"
         autoCorrect={false}
         autoCapitalize={'none'}

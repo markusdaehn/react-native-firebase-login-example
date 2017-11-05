@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField when rendered with name and placeholder properties set should render correctly with name and placeholder set to passed in props 1`] = `
+<Field
+  autoCorrect={false}
+  component={[Function]}
+  name="text-field-name"
+  placeholder="text-field-placeholder"
+  withRef={true}
+/>
+`;
+
+exports[`TextField when rendered with no props should render correctly with default props 1`] = `
+<Field
+  autoCorrect={false}
+  component={[Function]}
+  name="text"
+  placeholder="Enter text"
+  withRef={true}
+/>
+`;

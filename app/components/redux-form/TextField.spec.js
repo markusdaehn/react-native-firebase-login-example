@@ -1,25 +1,25 @@
 import 'react-native';
 import React from 'react';
-import EmailField from './EmailField';
+import TextField from './TextField';
 import { shallow } from 'enzyme';
 
-describe('EmailField', function () {
-  let email;
+describe('TextField', function () {
+  let text;
   describe('when rendered with no props', function () {
     beforeEach(function () {
-      email = shallow(<EmailField />)
+      text = shallow(<TextField />)
     });
 
     it('should render correctly with default props', function () {
-      expect(email).toMatchSnapshot();
+      expect(text).toMatchSnapshot();
     });
   });
   describe('when rendered with name and placeholder properties set', function () {
     beforeEach(function () {
-      email = shallow(<EmailField name='email-field-name' placeholder='email-field-placeholder'  />)
+      text = shallow(<TextField name='text-field-name' placeholder='text-field-placeholder'  />)
     });
     it('should render correctly with name and placeholder set to passed in props', function () {
-      expect(email).toMatchSnapshot();
+      expect(text).toMatchSnapshot();
     });
   });
 });
