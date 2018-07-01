@@ -4,8 +4,9 @@ import { Button, Text, View } from 'react-native';
 import { EmailField, PasswordField, reduxForm } from '../../../components/redux-form'
 import styles from './styles';
 import validate from './validate';
-import {connect} from 'react-redux';
-import {navigate} from '../../../navigators/actions';
+import { connect } from 'react-redux';
+import { navigate } from '../../../navigators/actions';
+import { signIn } from '../actions';
 
 //@NOTE: This is a class because we have a ref property
 export class SignInForm extends Component {
@@ -14,7 +15,9 @@ export class SignInForm extends Component {
   }
 
   render() {
-    const { signIn, gotoSignUp, pristine, submitting } = this.props;
+    const { signIn, gotoSignUp, pristine, submitting, handleSubmit } = this.props;
+    const  onSubmit = handleSubmit(signIn);
+
     return (
       <View behavior='padding' style={styles.bg}>
         <EmailField
@@ -25,11 +28,11 @@ export class SignInForm extends Component {
         <PasswordField
           ref='password'
           returnKeyType='go'
-          onSubmitEditing={() => {signIn()}}
+          onSubmitEditing={onSubmit}
         />
         <Button
           title='Sign In'
-          onPress={signIn}
+          onPress={onSubmit}
           disabled={pristine || submitting}
           accessibilityLabel='Press to submit sign in form'
         />
@@ -50,7 +53,7 @@ SignInForm.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  signIn: () => dispatch(navigate({routeName:'Home'})),
+  signIn: ({email, password}) => dispatch(signIn({email, password})),
   gotoSignUp: () => dispatch(navigate({routeName:'SignUp'})),
 });
 

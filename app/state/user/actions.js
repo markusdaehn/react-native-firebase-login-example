@@ -4,7 +4,7 @@ const USER_SET = 'yuzsa/user/set';
  * @param {string} user.auth.token - The access token
  * @param {string} user.uid - The user UID
  */
-export function userSet(user) {
+export function setUser(user) {
   return {
     type: USER_SET,
     payload: user,
@@ -12,7 +12,7 @@ export function userSet(user) {
 }
 
 const USER_UNSET = 'yuzsa/user/unset';
-export function userUnset() {
+export function unsetUser() {
   return {
     type: USER_UNSET,
   };

@@ -14,7 +14,6 @@ export default class PasswordField extends Component {
 
   render() {
     const { name, placeholder, ...otherProps } = this.props;
-    console.log(`typeof(name) = ${name}`);
     return (
       <Field
         name={name || 'password'}

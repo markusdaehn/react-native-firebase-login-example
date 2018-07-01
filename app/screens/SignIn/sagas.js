@@ -1,3 +1,6 @@
+import { put, takeEvery } from 'redux-saga/effects';
+import { SIGNIN } from './actions';
+import { signinFailure, signinSuccess, signInSubmitting } from './actions';
 import { auth } from '../../services/api'
 import { SubmissionError } from '../../components/redux-form';
 
@@ -7,35 +10,53 @@ const AUTH_USER_DISABLED = 'User is disabled';
 const AUTH_USER_NOT_FOUND = 'User not found';
 const AUTH_WRONG_PASSWORD = 'Password is wrong';
 
-export default function submit(values, dispatch, props) {
-  const { email, password } = values;
+export function signIn({email, password}) {
   return auth.signInWithEmailAndPassword(email, password)
-    .then((user) => {
-      props.gotoHome();
-    })
     .catch((error) => {
       if(!error) throw new Error(UNKOWN_ERROR)
       switch(error.code) {
         case 'auth/invalid-email':
-          throw new SubmissionError({
+          return new SubmissionError({
             email: SIGNIN_INVALID_EMAIL,
             _error: [SIGNIN_INVALID_EMAIL]
           });
         case 'auth/user-disabled':
-          throw new SubmissionError({
+          return new SubmissionError({
             _error: [AUTH_USER_DISABLED]
           });
         case 'auth/user-not-found':
-          throw new SubmissionError({
+          return new SubmissionError({
             _error: [AUTH_USER_NOT_FOUND]
           });
         case 'auth/wrong-password':
-          throw new SubmissionError({
+          return new SubmissionError({
             password: AUTH_WRONG_PASSWORD,
             _error: [AUTH_WRONG_PASSWORD]
           });
         default:
-          throw new Error(error.message || UNKOWN_ERROR);
+          return new Error(error.message || UNKOWN_ERROR);
       }
     });
 }
+
+function* signInFlow(action) {
+  debugger;
+  const { email, password } = action.payload;
+
+  try {
+    put(signInSubmitting(user));
+    const user = yield call(signIn, {email, password});
+    yield put(signInSuccess(user));
+    return user;
+  } catch(error) {
+    yield put(signInFailure(error));
+  }
+}
+
+function* watchSignIn() {
+  yield takeLatest(SIGNIN, signinFlow);
+};
+
+// @TODO: can't directly export generator function due to react-native bug.
+// refactor when fixed
+export default watchSignIn;

@@ -1,7 +1,7 @@
-import signIn from '../screens/SignIn/saga';
-import {all} from 'redux-saga/effects';
+import signIn from '../screens/SignIn/sagas';
+import { all } from 'redux-saga/effects';
 
-const rootSaga = function* rootSaga(){
+function* rootSaga() {
   yield all([
     signIn
   ]);

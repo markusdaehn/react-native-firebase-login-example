@@ -1,30 +1,30 @@
-export const SIGNIN_SUBMIT = 'yuzsa/screens/signin/submit';
-/**
- * @param {Object} payload - form data
- * @param {string} payload.email
- * @param {string} payload.password
- */
-export function signInSubmit(payload) {
-  return {
-    type: SIGNIN_SUBMIT,
-    payload,
-  };
-}
-
-export const SIGNIN_REQUEST = 'yuzsa/screens/signin/request';
+export const SIGNIN_SUBMITTING = 'yuzsa/screens/signin/submitting';
 /**
  * @param {Object} payload - post data
  * @param {string} payload.email
  * @param {string} payload.password
  */
-export function signInRequest(payload) {
+export function signInSubmitting(payload) {
   return {
-    type: SIGNIN_REQUEST,
+    type: SIGNIN_SUBMITTING,
     payload,
   };
 }
 
-export const SIGNIN_SUCCESS = 'yuzsa/screens/signin/succeeded';
+export const SIGNIN = 'yuzsa/screens/signin';
+/**
+ * @param {Object} payload - post data
+ * @param {string} payload.email
+ * @param {string} payload.password
+ */
+export function signIn(payload) {
+  return {
+    type: SIGNIN,
+    payload,
+  };
+}
+
+export const SIGNIN_SUCCESS = 'yuzsa/screens/signin/success';
 /**
  * @param {Object} payload - User
  * @param {string} payload.id
@@ -33,7 +33,7 @@ export const SIGNIN_SUCCESS = 'yuzsa/screens/signin/succeeded';
 export function signInSuccess (payload) {
   return {
     type: SIGNIN_SUCCESS,
-    payload
+    payload,
   };
 }
 
@@ -46,5 +46,5 @@ export function signInFailure(payload) {
     type: SIGNIN_FAILURE,
     payload,
     error: true,
-  }
+  };
 }

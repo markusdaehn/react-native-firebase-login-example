@@ -20,12 +20,13 @@ export default class Input extends Component {
   }
 
   render() {
-    let { input, meta, ...otherProps } = this.props;
+    const { input, meta, ...otherProps } = this.props;
     return (
         <FormInput
           ref={(input) => this.input = input}
           {...input}
           {...otherProps}
+          onChangeText={input.onChange}
         />
     );
   }
